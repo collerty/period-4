@@ -1,18 +1,26 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
-    FlatList,
-    SafeAreaView,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Switch,
-    Text,
-    TouchableOpacity,
-    View
+  FlatList,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Switch,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from 'react-native';
 
 const FashionWardrobeApp = () => {
+  const [showLanding, setShowLanding] = useState(true);
+  const [showAuth, setShowAuth] = useState(false);
+  const [authMode, setAuthMode] = useState('signin'); // 'signin' or 'signup'
   const [activeTab, setActiveTab] = useState('Home');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [fullName, setFullName] = useState('');
   const [posts, setPosts] = useState([
     { id: 1, title: 'Summer Outfit', image: '👗', likes: 23 },
     { id: 2, title: 'Casual Friday', image: '👕', likes: 18 },
@@ -265,64 +273,248 @@ const FashionWardrobeApp = () => {
     </ScrollView>
   );
 
-  const renderContent = () => {
+  const renderLandingPage = () => (
+    <View style={styles.landingContainer}>
+      <View style={styles.landingContent}>
+        <View style={styles.logoContainer}>
+          <Text style={styles.logoText}>
+            Tail
+            <TouchableOpacity 
+              style={styles.clothButton}
+              onPress={() => {
+                setShowLanding(false);
+                setShowAuth(true);
+              }}
+            >
+              <Text style={styles.clothButtonText}>👕</Text>
+            </TouchableOpacity>
+            red
+          </Text>
+        </View>
+        <Text style={styles.tagline}>Your Perfect Style Awaits</Text>
+        <Text style={styles.description}>
+          Discover, organize, and style your wardrobe with AI-powered recommendations
+        </Text>
+        
+        <TouchableOpacity 
+          style={styles.landingButton}
+          onPress={() => {
+            setShowLanding(false);
+            setShowAuth(true);
+          }}
+        >
+          <Text style={styles.landingButtonText}>Get Started</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+
+  const renderAuthPage = () => (
+    <View style={styles.authContainer}>
+      <ScrollView contentContainerStyle={styles.authContent} showsVerticalScrollIndicator={false}>
+        <TouchableOpacity 
+          style={styles.backButton}
+          onPress={() => {
+            setShowAuth(false);
+            setShowLanding(true);
+          }}
+        >
+          <Text style={styles.backButtonText}>← Back</Text>
+        </TouchableOpacity>
+
+        <View style={styles.authHeader}>
+          <Text style={styles.authTitle}>
+            {authMode === 'signin' ? 'Welcome Back!' : 'Join Tailored'}
+          </Text>
+          <Text style={styles.authSubtitle}>
+            {authMode === 'signin' 
+              ? 'Sign in to continue your style journey' 
+              : 'Create your account and discover your perfect style'
+            }
+          </Text>
+        </View>
+
+        <View style={styles.authForm}>
+          {authMode === 'signup' && (
+            <View style={styles.inputContainer}>
+              <Text style={styles.inputLabel}>Full Name</Text>
+              <TextInput
+                style={styles.textInput}
+                placeholder="Enter your full name"
+                placeholderTextColor="#999"
+                value={fullName}
+                onChangeText={setFullName}
+              />
+            </View>
+          )}
+
+          <View style={styles.inputContainer}>
+            <Text style={styles.inputLabel}>Email</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Enter your email"
+              placeholderTextColor="#999"
+              value={email}
+              onChangeText={setEmail}
+              keyboardType="email-address"
+              autoCapitalize="none"
+            />
+          </View>
+
+          <View style={styles.inputContainer}>
+            <Text style={styles.inputLabel}>Password</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Enter your password"
+              placeholderTextColor="#999"
+              value={password}
+              onChangeText={setPassword}
+              secureTextEntry
+            />
+          </View>
+
+          {authMode === 'signup' && (
+            <View style={styles.inputContainer}>
+              <Text style={styles.inputLabel}>Confirm Password</Text>
+              <TextInput
+                style={styles.textInput}
+                placeholder="Confirm your password"
+                placeholderTextColor="#999"
+                value={confirmPassword}
+                onChangeText={setConfirmPassword}
+                secureTextEntry
+              />
+            </View>
+          )}
+
+          <TouchableOpacity 
+            style={styles.authButton}
+            onPress={() => {
+              setShowAuth(false);
+              // Reset form
+              setEmail('');
+              setPassword('');
+              setConfirmPassword('');
+              setFullName('');
+            }}
+          >
+            <Text style={styles.authButtonText}>
+              {authMode === 'signin' ? 'Sign In' : 'Create Account'}
+            </Text>
+          </TouchableOpacity>
+
+          {authMode === 'signin' && (
+            <TouchableOpacity style={styles.forgotPassword}>
+              <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+            </TouchableOpacity>
+          )}
+        </View>
+
+        <View style={styles.authSwitch}>
+          <Text style={styles.authSwitchText}>
+            {authMode === 'signin' 
+              ? "Don't have an account? " 
+              : "Already have an account? "
+            }
+          </Text>
+          <TouchableOpacity 
+            onPress={() => setAuthMode(authMode === 'signin' ? 'signup' : 'signin')}
+          >
+            <Text style={styles.authSwitchLink}>
+              {authMode === 'signin' ? 'Sign Up' : 'Sign In'}
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.socialAuth}>
+          <Text style={styles.socialAuthText}>Or continue with</Text>
+          <View style={styles.socialButtons}>
+            <TouchableOpacity style={styles.socialButton}>
+              <Text style={styles.socialButtonText}>📱 Google</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.socialButton}>
+              <Text style={styles.socialButtonText}>📘 Facebook</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ScrollView>
+    </View>
+  );
+
+    let content;
+
+  if (showLanding) {
+    content = renderLandingPage();
+  } else if (showAuth) {
+    content = renderAuthPage();
+  } else {
     switch (activeTab) {
       case 'Home':
-        return renderHome();
+        content = renderHome();
+        break;
       case 'Calendar':
-        return renderCalendar();
+        content = renderCalendar();
+        break;
       case 'Wardrobe':
-        return renderWardrobe();
+        content = renderWardrobe();
+        break;
       case 'Profile':
-        return renderProfile();
+        content = renderProfile();
+        break;
       case 'Outfit':
-        return renderOutfitOfTheDay();
+        content = renderOutfitOfTheDay();
+        break;
       case 'FirstTime':
-        return renderFirstTimePages();
+        content = renderFirstTimePages();
+        break;
       default:
-        return renderHome();
+        content = renderHome();
     }
-  };
+  }
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#007AFF" />
+      <StatusBar barStyle="light-content" backgroundColor="#808000" />
       
-      {/* Header */}
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Fashion Wardrobe</Text>
-      </View>
+      {!showLanding && !showAuth && (
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>Tailored</Text>
+        </View>
+      )}
 
-      {/* Content */}
       <View style={styles.body}>
-        {renderContent()}
+        {content}
       </View>
 
-      {/* Bottom Tab Navigation */}
-      <View style={styles.tabContainer}>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.tabScrollView}>
-          {tabs.map((tab) => (
-            <TouchableOpacity
-              key={tab.id}
-              style={[
-                styles.tabButton,
-                activeTab === tab.id && styles.activeTabButton,
-              ]}
-              onPress={() => setActiveTab(tab.id)}
-            >
-              <Text style={styles.tabIcon}>{tab.icon}</Text>
-              <Text style={[
-                styles.tabLabel,
-                activeTab === tab.id && styles.activeTabLabel,
-              ]}>
-                {tab.label}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
-      </View>
+      {!showLanding && !showAuth && (
+        <View style={styles.tabContainer}>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.tabScrollView}>
+            {tabs.map((tab) => (
+              <TouchableOpacity
+                key={tab.id}
+                style={[
+                  styles.tabButton,
+                  activeTab === tab.id && styles.activeTabButton,
+                ]}
+                onPress={() => setActiveTab(tab.id)}
+              >
+                <Text style={styles.tabIcon}>{tab.icon}</Text>
+                <Text
+                  style={[
+                    styles.tabLabel,
+                    activeTab === tab.id && styles.activeTabLabel,
+                  ]}
+                >
+                  {tab.label}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+        </View>
+      )}
     </SafeAreaView>
   );
+
 };
 
 const styles = StyleSheet.create({
@@ -331,7 +523,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8f9fa',
   },
   header: {
-    backgroundColor: '#007AFF',
+    backgroundColor: '#808000',
     paddingVertical: 15,
     paddingHorizontal: 20,
     alignItems: 'center',
@@ -362,7 +554,7 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   addButton: {
-    backgroundColor: '#007AFF',
+    backgroundColor: '#808000',
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 8,
@@ -444,7 +636,7 @@ const styles = StyleSheet.create({
   },
   calendarOutfit: {
     fontSize: 14,
-    color: '#007AFF',
+    color: '#808000',
   },
   previewCard: {
     backgroundColor: '#E3F2FD',
@@ -605,7 +797,7 @@ const styles = StyleSheet.create({
   ootdOutfit: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#007AFF',
+    color: '#808000',
     marginBottom: 8,
   },
   ootdNote: {
@@ -706,7 +898,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   primaryButton: {
-    backgroundColor: '#007AFF',
+    backgroundColor: '#808000',
     paddingVertical: 15,
     paddingHorizontal: 20,
     borderRadius: 8,
@@ -726,10 +918,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
     borderWidth: 1,
-    borderColor: '#007AFF',
+    borderColor: '#808000',
   },
   secondaryButtonText: {
-    color: '#007AFF',
+    color: '#808000',
     fontSize: 18,
     fontWeight: '600',
   },
@@ -768,7 +960,7 @@ const styles = StyleSheet.create({
     minWidth: 80,
   },
   activeTabButton: {
-    backgroundColor: '#007AFF',
+    backgroundColor: '#808000',
   },
   tabIcon: {
     fontSize: 20,
@@ -782,6 +974,213 @@ const styles = StyleSheet.create({
   },
   activeTabLabel: {
     color: 'white',
+    fontWeight: '600',
+  },
+  // Landing Page Styles
+  landingContainer: {
+    flex: 1,
+    backgroundColor: '#808000',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  landingContent: {
+    alignItems: 'center',
+    paddingHorizontal: 40,
+  },
+  logoContainer: {
+    marginBottom: 30,
+  },
+  logoText: {
+    fontSize: 48,
+    fontWeight: 'bold',
+    color: 'white',
+    textAlign: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  clothButton: {
+    backgroundColor: 'white',
+    borderRadius: 25,
+    width: 50,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 8,
+  },
+  clothButtonText: {
+    fontSize: 24,
+  },
+  tagline: {
+    fontSize: 24,
+    color: 'white',
+    textAlign: 'center',
+    marginBottom: 15,
+    fontWeight: '600',
+  },
+  description: {
+    fontSize: 16,
+    color: 'rgba(255, 255, 255, 0.9)',
+    textAlign: 'center',
+    lineHeight: 24,
+    marginBottom: 40,
+  },
+  landingButton: {
+    backgroundColor: 'white',
+    paddingVertical: 15,
+    paddingHorizontal: 40,
+    borderRadius: 30,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 8,
+  },
+  landingButtonText: {
+    color: '#808000',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  // Auth Page Styles
+  authContainer: {
+    flex: 1,
+    backgroundColor: '#808000',
+  },
+  authContent: {
+    flexGrow: 1,
+    paddingHorizontal: 30,
+    paddingTop: 20,
+    paddingBottom: 40,
+  },
+  
+  backButton: {
+    alignSelf: 'flex-start',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    marginBottom: 20,
+  },
+  backButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  authHeader: {
+    alignItems: 'center',
+    marginBottom: 40,
+  },
+  authTitle: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: 'white',
+    marginBottom: 10,
+    textAlign: 'center',
+  },
+  authSubtitle: {
+    fontSize: 16,
+    color: 'rgba(255, 255, 255, 0.9)',
+    textAlign: 'center',
+    lineHeight: 22,
+  },
+  authForm: {
+    marginBottom: 30,
+  },
+  inputContainer: {
+    marginBottom: 20,
+  },
+  inputLabel: {
+    fontSize: 16,
+    color: 'white',
+    marginBottom: 8,
+    fontWeight: '600',
+  },
+  textInput: {
+    backgroundColor: 'white',
+    borderRadius: 12,
+    paddingHorizontal: 15,
+    paddingVertical: 15,
+    fontSize: 16,
+    color: '#333',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  authButton: {
+    backgroundColor: 'white',
+    paddingVertical: 15,
+    borderRadius: 12,
+    alignItems: 'center',
+    marginTop: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 8,
+  },
+  authButtonText: {
+    color: '#808000',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  forgotPassword: {
+    alignItems: 'center',
+    marginTop: 15,
+  },
+  forgotPasswordText: {
+    color: 'rgba(255, 255, 255, 0.9)',
+    fontSize: 14,
+    textDecorationLine: 'underline',
+  },
+  authSwitch: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 30,
+  },
+  authSwitchText: {
+    color: 'rgba(255, 255, 255, 0.9)',
+    fontSize: 16,
+  },
+  authSwitchLink: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textDecorationLine: 'underline',
+  },
+  socialAuth: {
+    alignItems: 'center',
+  },
+  socialAuthText: {
+    color: 'rgba(255, 255, 255, 0.9)',
+    fontSize: 16,
+    marginBottom: 20,
+  },
+  socialButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
+  socialButton: {
+    backgroundColor: 'white',
+    flex: 1,
+    paddingVertical: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginHorizontal: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  socialButtonText: {
+    color: '#808000',
+    fontSize: 16,
     fontWeight: '600',
   },
 });

@@ -1,5 +1,4 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
 import { Platform } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
@@ -19,10 +18,7 @@ export default function TabLayout() {
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
         tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
+          ios: { position: 'absolute' },
           default: {},
         }),
       }}>
@@ -38,6 +34,41 @@ export default function TabLayout() {
         options={{
           title: 'Explore',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="CalendarTab"
+        options={{
+          title: 'Calendar',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="calendar" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="OutfitTab"
+        options={{
+          title: 'Outfits',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="tshirt.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="WardrobeTab"
+        options={{
+          title: 'Wardrobe',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="hanger" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="ProfileTab"
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="person.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="FAQTab"
+        options={{
+          title: 'FAQ',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="questionmark.circle.fill" color={color} />,
         }}
       />
     </Tabs>
