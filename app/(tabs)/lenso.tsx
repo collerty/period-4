@@ -1,13 +1,22 @@
+import { useLensoSearch } from '@/hooks/useLensoSearch';
 import React, { useState } from 'react';
-import { ActivityIndicator, Button, FlatList, Image, View } from 'react-native';
+import {
+    ActivityIndicator,
+    FlatList,
+    Image,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+} from 'react-native';
 import RNFS from 'react-native-fs';
 import {
     Asset,
     ImagePickerResponse,
     launchImageLibrary,
 } from 'react-native-image-picker';
-import { useLensoSearch } from '../../hooks/useLensoSearch';
 
+// ✅ Define the result type
 type LensoResult = {
   urlList: {
     imageUrl: string;
@@ -40,7 +49,7 @@ export default function LensoScreen() {
             try {
               const base64 = await RNFS.readFile(asset.uri, 'base64');
               const data = await searchSimilar(base64);
-              setResults(data.results); // ✅ correctly typed!
+              setResults(data.results);
             } catch (err) {
               console.error(err);
             } finally {
@@ -53,21 +62,76 @@ export default function LensoScreen() {
   };
 
   return (
-    <View style={{ flex: 1, padding: 16 }}>
-      <Button title="Pick Image & Search Similar" onPress={pickAndSearch} />
+    <View style={styles.container}>
+      <Text style={styles.title}>Find Similar Clothing</Text>
 
-      {loading && <ActivityIndicator size="large" style={{ marginTop: 20 }} />}
+      <TouchableOpacity style={styles.button} onPress={pickAndSearch}>
+        <Text style={styles.buttonText}>Pick an Image</Text>
+      </TouchableOpacity>
+
+      {loading && <ActivityIndicator size="large" color="#808000" style={styles.loader} />}
 
       <FlatList
         data={results}
         keyExtractor={(_, index) => index.toString()}
+        numColumns={2}
+        contentContainerStyle={styles.list}
         renderItem={({ item }) => (
-          <Image
-            source={{ uri: item.urlList[0].imageUrl }}
-            style={{ width: 100, height: 100, margin: 8 }}
-          />
+          <View style={styles.imageWrapper}>
+            <Image
+              source={{ uri: item.urlList[0].imageUrl }}
+              style={styles.image}
+              resizeMode="cover"
+            />
+          </View>
         )}
       />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF', // Main background
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#808000', // Accent
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  button: {
+    backgroundColor: '#808000', // Accent
+    paddingVertical: 15,
+    paddingHorizontal: 25,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  buttonText: {
+    color: '#FFFFFF', // Text on accent
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  loader: {
+    marginVertical: 20,
+  },
+  list: {
+    gap: 10,
+  },
+  imageWrapper: {
+    flex: 1,
+    backgroundColor: '#E0E0E0', // Neutral background for each item
+    borderRadius: 8,
+    overflow: 'hidden',
+    margin: 5,
+    aspectRatio: 1, // Square image
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+  },
+});
