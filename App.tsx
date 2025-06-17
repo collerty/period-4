@@ -1,131 +1,137 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
-import type {PropsWithChildren} from 'react';
+import { useLensoSearch } from '@/hooks/useLensoSearch';
+import React, { useState } from 'react';
 import {
-  ScrollView,
-  StatusBar,
+  ActivityIndicator,
+  FlatList,
+  Image,
   StyleSheet,
   Text,
-  useColorScheme,
+  TouchableOpacity,
   View,
 } from 'react-native';
-
+import RNFS from 'react-native-fs';
 import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+  Asset,
+  ImagePickerResponse,
+  launchImageLibrary,
+} from 'react-native-image-picker';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+// ✅ Define the result type
+type LensoResult = {
+  urlList: {
+    imageUrl: string;
+    sourceUrl: string;
+    title: string;
+  }[];
+  base64Image: string;
+  confidenceScore: number;
+};
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+export default function LensoScreen() {
+  const [results, setResults] = useState<LensoResult[]>([]);
+  const [loading, setLoading] = useState(false);
+  const { searchSimilar } = useLensoSearch();
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+  const pickAndSearch = async () => {
+    launchImageLibrary(
+      { mediaType: 'photo' },
+      async (response: ImagePickerResponse) => {
+        if (response.didCancel) return;
+        if (response.errorCode) {
+          console.error(response.errorMessage);
+          return;
+        }
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+        if (response.assets && response.assets.length > 0) {
+          const asset: Asset = response.assets[0];
+          if (asset.uri) {
+            setLoading(true);
+            try {
+              const base64 = await RNFS.readFile(asset.uri, 'base64');
+              const data = await searchSimilar(base64);
+              setResults(data.results);
+            } catch (err) {
+              console.error(err);
+            } finally {
+              setLoading(false);
+            }
+          }
+        }
+      }
+    );
   };
 
-  /*
-   * To keep the template simple and small we're adding padding to prevent view
-   * from rendering under the System UI.
-   * For bigger apps the recommendation is to use `react-native-safe-area-context`:
-   * https://github.com/AppAndFlow/react-native-safe-area-context
-   *
-   * You can read more about it here:
-   * https://github.com/react-native-community/discussions-and-proposals/discussions/827
-   */
-  const safePadding = '5%';
-
   return (
-    <View style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+    <View style={styles.container}>
+      <Text style={styles.title}>Find Similar Clothing</Text>
+
+      <TouchableOpacity style={styles.button} onPress={pickAndSearch}>
+        <Text style={styles.buttonText}>Pick an Image</Text>
+      </TouchableOpacity>
+
+      {loading && <ActivityIndicator size="large" color="#808000" style={styles.loader} />}
+
+      <FlatList
+        data={results}
+        keyExtractor={(_, index) => index.toString()}
+        numColumns={2}
+        contentContainerStyle={styles.list}
+        renderItem={({ item }) => (
+          <View style={styles.imageWrapper}>
+            <Image
+              source={{ uri: item.urlList[0].imageUrl }}
+              style={styles.image}
+              resizeMode="cover"
+            />
+          </View>
+        )}
       />
-      <ScrollView
-        style={backgroundStyle}>
-        <View style={{paddingRight: safePadding}}>
-          <Header/>
-        </View>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            paddingHorizontal: safePadding,
-            paddingBottom: safePadding,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF', // Main background
+    padding: 20,
   },
-  sectionTitle: {
+  title: {
     fontSize: 24,
-    fontWeight: '600',
+    fontWeight: 'bold',
+    color: '#808000', // Accent
+    marginBottom: 20,
+    textAlign: 'center',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  button: {
+    backgroundColor: '#808000', // Accent
+    paddingVertical: 15,
+    paddingHorizontal: 25,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginBottom: 20,
   },
-  highlight: {
-    fontWeight: '700',
+  buttonText: {
+    color: '#FFFFFF', // Text on accent
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  loader: {
+    marginVertical: 20,
+  },
+  list: {
+    gap: 10,
+  },
+  imageWrapper: {
+    flex: 1,
+    backgroundColor: '#E0E0E0', // Neutral background for each item
+    borderRadius: 8,
+    overflow: 'hidden',
+    margin: 5,
+    aspectRatio: 1, // Square image
+  },
+  image: {
+    width: '100%',
+    height: '100%',
   },
 });
-
-export default App;
