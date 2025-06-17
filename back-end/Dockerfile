@@ -34,7 +34,7 @@ COPY --from=builder /app/dist ./dist
 RUN npx prisma generate
 
 # Expose the port the app runs on
-EXPOSE 3000
+EXPOSE 4000
 
 # Start the app
 CMD ["node", "dist/main"]
