@@ -1,6 +1,21 @@
 {
   "compilerOptions": {
-    "jsx": "react"
+    "jsx": "react-jsx",
+    "baseUrl": "C:\\Users\\osina\\OneDrive - NHL Stenden\\Documenten\\period-4",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/components/*": ["./period-4/components/*"],
+      "@/screens/*": ["./period-4/app/(tabs)/*"],
+      "@assets/*": ["./period-4/assets/*"],
+      "@/hooks/*": ["./period-4/hooks/*"],
+      "@/constants/*": ["./period-4/constants/*"]
+    },
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
   },
   "extends": "@react-native/typescript-config/tsconfig.json"
 }
+

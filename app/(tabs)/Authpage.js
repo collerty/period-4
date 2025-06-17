@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { styles } from '../styles/AppStyles';
+import { styles } from '../styles/styles';
 
 const AuthPage = ({
   authMode,
@@ -125,10 +125,16 @@ const AuthPage = ({
           <Text style={styles.socialAuthText}>Or continue with</Text>
           <View style={styles.socialButtons}>
             <TouchableOpacity style={styles.socialButton}>
-              <Text style={styles.socialButtonText}>📱 Google</Text>
+              <View style={styles.buttonContent}>
+                <Image source={require('../assets/images/mobile_phone.png')} style={styles.socialIcon} />
+                <Text style={styles.socialButtonText}>Google</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity style={styles.socialButton}>
-              <Text style={styles.socialButtonText}>📘 Facebook</Text>
+              <View style={styles.buttonContent}>
+                <Image source={require('../assets/images/book.png')} style={styles.socialIcon} />
+                <Text style={styles.socialButtonText}>Facebook</Text>
+              </View>
             </TouchableOpacity>
           </View>
         </View>

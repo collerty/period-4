@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import { styles } from '../styles/AppStyles';
+import { styles } from '../styles/styles.js';
 
 const LandingPage = ({ onGetStarted }) => {
   return (
@@ -9,13 +9,13 @@ const LandingPage = ({ onGetStarted }) => {
         <View style={styles.logoContainer}>
           <Text style={styles.logoText}>
             Tail
-            <TouchableOpacity 
-              style={styles.clothButton}
-              onPress={onGetStarted}
-            >
-              <Text style={styles.clothButtonText}>👕</Text>
+            <TouchableOpacity style={styles.clothButton}
+              onPress={onGetStarted}>
+              <View style={styles.clothButtonContent}>
+              <Image source={require('../assets/images/tshirt.png')} style={styles.clothIcon} />
+              <Text style={styles.clothButtonText}>red</Text>
+              </View>
             </TouchableOpacity>
-            red
           </Text>
         </View>
         <Text style={styles.tagline}>Your Perfect Style Awaits</Text>

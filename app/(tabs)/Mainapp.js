@@ -7,7 +7,7 @@ import HomePage from '../pages/HomePage';
 import OutfitOfTheDayPage from '../pages/OutfitOfTheDayPage';
 import ProfilePage from '../pages/ProfilePage';
 import WardrobePage from '../pages/WardrobePage';
-import { styles } from '../styles/AppStyles';
+import { styles } from '../styles/styles.js';
 
 const MainApp = () => {
   const [activeTab, setActiveTab] = useState('Home');
@@ -16,15 +16,23 @@ const MainApp = () => {
   const [notifications, setNotifications] = useState(true);
 
   const tabs = [
-    { id: 'Home', label: 'Home', icon: '🏠' },
-    { id: 'Calendar', label: 'Calendar', icon: '📅' },
-    { id: 'Wardrobe', label: 'Wardrobe', icon: '👗' },
-    { id: 'Profile', label: 'Profile', icon: '👤' },
-    { id: 'Outfit', label: 'Outfit of the day', icon: '✨' },
-    { id: 'FirstTime', label: 'First time pages', icon: '🌟' },
+    { id: 'Home', label: 'Home', icon: require('./assets/images/house.png') },
+    { id: 'Calendar', label: 'Calendar', icon: require('./assets/images/calendar.png') },
+    { id: 'Wardrobe', label: 'Wardrobe', icon: require('./assets/images/nav_bar_dress.png') },
+    { id: 'Profile', label: 'Profile', icon: require('./assets/images/profile.png.jpg') },
+    { id: 'Outfit', label: 'Outfit of the day', icon: require('./assets/images/star.png') },
+    { id: 'FAQ', label: 'FAQ page', icon: require('./assets/images/faq(1).png') },
   ];
 
-  const renderContent = () => {
+{tabs.map(tab => (
+  <TouchableOpacity key={tab.id} style={styles.tabItem}>
+    <Image source={tab.icon} style={styles.tabIcon} />
+    <Text style={styles.tabLabel}>{tab.label}</Text>
+  </TouchableOpacity>
+))}
+
+
+  function renderContent() {
     switch (activeTab) {
       case 'Home':
         return <HomePage posts={posts} />;
@@ -34,11 +42,10 @@ const MainApp = () => {
         return <WardrobePage />;
       case 'Profile':
         return (
-          <ProfilePage 
+          <ProfilePage
             closetItems={closetItems}
             notifications={notifications}
-            onNotificationsChange={setNotifications}
-          />
+            onNotificationsChange={setNotifications} />
         );
       case 'Outfit':
         return <OutfitOfTheDayPage />;
@@ -47,7 +54,7 @@ const MainApp = () => {
       default:
         return <HomePage posts={posts} />;
     }
-  };
+  }
 
   return (
     <>

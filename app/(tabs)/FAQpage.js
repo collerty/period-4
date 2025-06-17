@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import {
-  FlatList,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
+    FlatList,
+    ScrollView,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from 'react-native';
-import { appStyles } from './styles'; // Import your styles
+import { appStyles } from '../styles/styles.js'; // Import your styles
 
 const FAQPage = () => {
   const [expandedFaq, setExpandedFaq] = useState(null);
@@ -76,19 +76,19 @@ const FAQPage = () => {
   };
 
   const renderFaqItem = ({ item }) => (
-    <View style={appStyles.faqContainer}>
+    <View style={styles.faqContainer}>
       <TouchableOpacity
-        style={appStyles.faqHeader}
+        style={styles.faqHeader}
         onPress={() => toggleFaq(item.id)}
       >
-        <Text style={appStyles.faqQuestion}>{item.question}</Text>
-        <Text style={appStyles.faqIcon}>
+        <Text style={styles.faqQuestion}>{item.question}</Text>
+        <Text style={styles.faqIcon}>
           {expandedFaq === item.id ? '−' : '+'}
         </Text>
       </TouchableOpacity>
       {expandedFaq === item.id && (
-        <View style={appStyles.faqAnswer}>
-          <Text style={appStyles.faqAnswerText}>{item.answer}</Text>
+        <View style={styles.faqAnswer}>
+          <Text style={styles.faqAnswerText}>{item.answer}</Text>
         </View>
       )}
     </View>
