@@ -140,6 +140,22 @@ exports.Prisma.ClothScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.OutfitScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  userId: 'userId',
+  description: 'description',
+  imageUrl: 'imageUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.OutfitClothScalarFieldEnum = {
+  id: 'id',
+  outfitId: 'outfitId',
+  clothId: 'clothId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -158,7 +174,9 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Cloth: 'Cloth'
+  Cloth: 'Cloth',
+  Outfit: 'Outfit',
+  OutfitCloth: 'OutfitCloth'
 };
 
 /**

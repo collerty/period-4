@@ -23,6 +23,16 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  * 
  */
 export type Cloth = $Result.DefaultSelection<Prisma.$ClothPayload>
+/**
+ * Model Outfit
+ * 
+ */
+export type Outfit = $Result.DefaultSelection<Prisma.$OutfitPayload>
+/**
+ * Model OutfitCloth
+ * 
+ */
+export type OutfitCloth = $Result.DefaultSelection<Prisma.$OutfitClothPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -168,6 +178,26 @@ export class PrismaClient<
     * ```
     */
   get cloth(): Prisma.ClothDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.outfit`: Exposes CRUD operations for the **Outfit** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Outfits
+    * const outfits = await prisma.outfit.findMany()
+    * ```
+    */
+  get outfit(): Prisma.OutfitDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.outfitCloth`: Exposes CRUD operations for the **OutfitCloth** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more OutfitCloths
+    * const outfitCloths = await prisma.outfitCloth.findMany()
+    * ```
+    */
+  get outfitCloth(): Prisma.OutfitClothDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -609,7 +639,9 @@ export namespace Prisma {
 
   export const ModelName: {
     User: 'User',
-    Cloth: 'Cloth'
+    Cloth: 'Cloth',
+    Outfit: 'Outfit',
+    OutfitCloth: 'OutfitCloth'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -628,7 +660,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "cloth"
+      modelProps: "user" | "cloth" | "outfit" | "outfitCloth"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -780,6 +812,154 @@ export namespace Prisma {
           }
         }
       }
+      Outfit: {
+        payload: Prisma.$OutfitPayload<ExtArgs>
+        fields: Prisma.OutfitFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.OutfitFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.OutfitFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitPayload>
+          }
+          findFirst: {
+            args: Prisma.OutfitFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.OutfitFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitPayload>
+          }
+          findMany: {
+            args: Prisma.OutfitFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitPayload>[]
+          }
+          create: {
+            args: Prisma.OutfitCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitPayload>
+          }
+          createMany: {
+            args: Prisma.OutfitCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.OutfitCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitPayload>[]
+          }
+          delete: {
+            args: Prisma.OutfitDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitPayload>
+          }
+          update: {
+            args: Prisma.OutfitUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitPayload>
+          }
+          deleteMany: {
+            args: Prisma.OutfitDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.OutfitUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.OutfitUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitPayload>[]
+          }
+          upsert: {
+            args: Prisma.OutfitUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitPayload>
+          }
+          aggregate: {
+            args: Prisma.OutfitAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOutfit>
+          }
+          groupBy: {
+            args: Prisma.OutfitGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OutfitGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.OutfitCountArgs<ExtArgs>
+            result: $Utils.Optional<OutfitCountAggregateOutputType> | number
+          }
+        }
+      }
+      OutfitCloth: {
+        payload: Prisma.$OutfitClothPayload<ExtArgs>
+        fields: Prisma.OutfitClothFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.OutfitClothFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitClothPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.OutfitClothFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitClothPayload>
+          }
+          findFirst: {
+            args: Prisma.OutfitClothFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitClothPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.OutfitClothFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitClothPayload>
+          }
+          findMany: {
+            args: Prisma.OutfitClothFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitClothPayload>[]
+          }
+          create: {
+            args: Prisma.OutfitClothCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitClothPayload>
+          }
+          createMany: {
+            args: Prisma.OutfitClothCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.OutfitClothCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitClothPayload>[]
+          }
+          delete: {
+            args: Prisma.OutfitClothDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitClothPayload>
+          }
+          update: {
+            args: Prisma.OutfitClothUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitClothPayload>
+          }
+          deleteMany: {
+            args: Prisma.OutfitClothDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.OutfitClothUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.OutfitClothUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitClothPayload>[]
+          }
+          upsert: {
+            args: Prisma.OutfitClothUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OutfitClothPayload>
+          }
+          aggregate: {
+            args: Prisma.OutfitClothAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOutfitCloth>
+          }
+          groupBy: {
+            args: Prisma.OutfitClothGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OutfitClothGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.OutfitClothCountArgs<ExtArgs>
+            result: $Utils.Optional<OutfitClothCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -866,6 +1046,8 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     user?: UserOmit
     cloth?: ClothOmit
+    outfit?: OutfitOmit
+    outfitCloth?: OutfitClothOmit
   }
 
   /* Types for Logging */
@@ -961,10 +1143,12 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     clothes: number
+    outfits: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     clothes?: boolean | UserCountOutputTypeCountClothesArgs
+    outfits?: boolean | UserCountOutputTypeCountOutfitsArgs
   }
 
   // Custom InputTypes
@@ -983,6 +1167,75 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountClothesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ClothWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountOutfitsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OutfitWhereInput
+  }
+
+
+  /**
+   * Count Type ClothCountOutputType
+   */
+
+  export type ClothCountOutputType = {
+    outfits: number
+  }
+
+  export type ClothCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    outfits?: boolean | ClothCountOutputTypeCountOutfitsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ClothCountOutputType without action
+   */
+  export type ClothCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClothCountOutputType
+     */
+    select?: ClothCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ClothCountOutputType without action
+   */
+  export type ClothCountOutputTypeCountOutfitsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OutfitClothWhereInput
+  }
+
+
+  /**
+   * Count Type OutfitCountOutputType
+   */
+
+  export type OutfitCountOutputType = {
+    clothes: number
+  }
+
+  export type OutfitCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    clothes?: boolean | OutfitCountOutputTypeCountClothesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * OutfitCountOutputType without action
+   */
+  export type OutfitCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutfitCountOutputType
+     */
+    select?: OutfitCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * OutfitCountOutputType without action
+   */
+  export type OutfitCountOutputTypeCountClothesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OutfitClothWhereInput
   }
 
 
@@ -1163,6 +1416,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     clothes?: boolean | User$clothesArgs<ExtArgs>
+    outfits?: boolean | User$outfitsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1196,6 +1450,7 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     clothes?: boolean | User$clothesArgs<ExtArgs>
+    outfits?: boolean | User$outfitsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1205,6 +1460,7 @@ export namespace Prisma {
     name: "User"
     objects: {
       clothes: Prisma.$ClothPayload<ExtArgs>[]
+      outfits: Prisma.$OutfitPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1608,6 +1864,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     clothes<T extends User$clothesArgs<ExtArgs> = {}>(args?: Subset<T, User$clothesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClothPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    outfits<T extends User$outfitsArgs<ExtArgs> = {}>(args?: Subset<T, User$outfitsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutfitPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2055,6 +2312,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.outfits
+   */
+  export type User$outfitsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Outfit
+     */
+    select?: OutfitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Outfit
+     */
+    omit?: OutfitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitInclude<ExtArgs> | null
+    where?: OutfitWhereInput
+    orderBy?: OutfitOrderByWithRelationInput | OutfitOrderByWithRelationInput[]
+    cursor?: OutfitWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: OutfitScalarFieldEnum | OutfitScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2262,6 +2543,8 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
+    outfits?: boolean | Cloth$outfitsArgs<ExtArgs>
+    _count?: boolean | ClothCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["cloth"]>
 
   export type ClothSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2302,6 +2585,8 @@ export namespace Prisma {
   export type ClothOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "type" | "color" | "imageUrl" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["cloth"]>
   export type ClothInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
+    outfits?: boolean | Cloth$outfitsArgs<ExtArgs>
+    _count?: boolean | ClothCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ClothIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2314,6 +2599,7 @@ export namespace Prisma {
     name: "Cloth"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
+      outfits: Prisma.$OutfitClothPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2719,6 +3005,7 @@ export namespace Prisma {
   export interface Prisma__ClothClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    outfits<T extends Cloth$outfitsArgs<ExtArgs> = {}>(args?: Subset<T, Cloth$outfitsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutfitClothPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3152,6 +3439,30 @@ export namespace Prisma {
   }
 
   /**
+   * Cloth.outfits
+   */
+  export type Cloth$outfitsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutfitCloth
+     */
+    select?: OutfitClothSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutfitCloth
+     */
+    omit?: OutfitClothOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitClothInclude<ExtArgs> | null
+    where?: OutfitClothWhereInput
+    orderBy?: OutfitClothOrderByWithRelationInput | OutfitClothOrderByWithRelationInput[]
+    cursor?: OutfitClothWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: OutfitClothScalarFieldEnum | OutfitClothScalarFieldEnum[]
+  }
+
+  /**
    * Cloth without action
    */
   export type ClothDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3167,6 +3478,2160 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ClothInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Outfit
+   */
+
+  export type AggregateOutfit = {
+    _count: OutfitCountAggregateOutputType | null
+    _min: OutfitMinAggregateOutputType | null
+    _max: OutfitMaxAggregateOutputType | null
+  }
+
+  export type OutfitMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    userId: string | null
+    description: string | null
+    imageUrl: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type OutfitMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    userId: string | null
+    description: string | null
+    imageUrl: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type OutfitCountAggregateOutputType = {
+    id: number
+    name: number
+    userId: number
+    description: number
+    imageUrl: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type OutfitMinAggregateInputType = {
+    id?: true
+    name?: true
+    userId?: true
+    description?: true
+    imageUrl?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type OutfitMaxAggregateInputType = {
+    id?: true
+    name?: true
+    userId?: true
+    description?: true
+    imageUrl?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type OutfitCountAggregateInputType = {
+    id?: true
+    name?: true
+    userId?: true
+    description?: true
+    imageUrl?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type OutfitAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Outfit to aggregate.
+     */
+    where?: OutfitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Outfits to fetch.
+     */
+    orderBy?: OutfitOrderByWithRelationInput | OutfitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: OutfitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Outfits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Outfits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Outfits
+    **/
+    _count?: true | OutfitCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: OutfitMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: OutfitMaxAggregateInputType
+  }
+
+  export type GetOutfitAggregateType<T extends OutfitAggregateArgs> = {
+        [P in keyof T & keyof AggregateOutfit]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOutfit[P]>
+      : GetScalarType<T[P], AggregateOutfit[P]>
+  }
+
+
+
+
+  export type OutfitGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OutfitWhereInput
+    orderBy?: OutfitOrderByWithAggregationInput | OutfitOrderByWithAggregationInput[]
+    by: OutfitScalarFieldEnum[] | OutfitScalarFieldEnum
+    having?: OutfitScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: OutfitCountAggregateInputType | true
+    _min?: OutfitMinAggregateInputType
+    _max?: OutfitMaxAggregateInputType
+  }
+
+  export type OutfitGroupByOutputType = {
+    id: string
+    name: string
+    userId: string
+    description: string | null
+    imageUrl: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: OutfitCountAggregateOutputType | null
+    _min: OutfitMinAggregateOutputType | null
+    _max: OutfitMaxAggregateOutputType | null
+  }
+
+  type GetOutfitGroupByPayload<T extends OutfitGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<OutfitGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof OutfitGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], OutfitGroupByOutputType[P]>
+            : GetScalarType<T[P], OutfitGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type OutfitSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    description?: boolean
+    imageUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    clothes?: boolean | Outfit$clothesArgs<ExtArgs>
+    _count?: boolean | OutfitCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["outfit"]>
+
+  export type OutfitSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    description?: boolean
+    imageUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["outfit"]>
+
+  export type OutfitSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    description?: boolean
+    imageUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["outfit"]>
+
+  export type OutfitSelectScalar = {
+    id?: boolean
+    name?: boolean
+    userId?: boolean
+    description?: boolean
+    imageUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type OutfitOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "userId" | "description" | "imageUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["outfit"]>
+  export type OutfitInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    clothes?: boolean | Outfit$clothesArgs<ExtArgs>
+    _count?: boolean | OutfitCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type OutfitIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type OutfitIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $OutfitPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Outfit"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      clothes: Prisma.$OutfitClothPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      userId: string
+      description: string | null
+      imageUrl: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["outfit"]>
+    composites: {}
+  }
+
+  type OutfitGetPayload<S extends boolean | null | undefined | OutfitDefaultArgs> = $Result.GetResult<Prisma.$OutfitPayload, S>
+
+  type OutfitCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OutfitFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OutfitCountAggregateInputType | true
+    }
+
+  export interface OutfitDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Outfit'], meta: { name: 'Outfit' } }
+    /**
+     * Find zero or one Outfit that matches the filter.
+     * @param {OutfitFindUniqueArgs} args - Arguments to find a Outfit
+     * @example
+     * // Get one Outfit
+     * const outfit = await prisma.outfit.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends OutfitFindUniqueArgs>(args: SelectSubset<T, OutfitFindUniqueArgs<ExtArgs>>): Prisma__OutfitClient<$Result.GetResult<Prisma.$OutfitPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Outfit that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {OutfitFindUniqueOrThrowArgs} args - Arguments to find a Outfit
+     * @example
+     * // Get one Outfit
+     * const outfit = await prisma.outfit.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends OutfitFindUniqueOrThrowArgs>(args: SelectSubset<T, OutfitFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OutfitClient<$Result.GetResult<Prisma.$OutfitPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Outfit that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutfitFindFirstArgs} args - Arguments to find a Outfit
+     * @example
+     * // Get one Outfit
+     * const outfit = await prisma.outfit.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends OutfitFindFirstArgs>(args?: SelectSubset<T, OutfitFindFirstArgs<ExtArgs>>): Prisma__OutfitClient<$Result.GetResult<Prisma.$OutfitPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Outfit that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutfitFindFirstOrThrowArgs} args - Arguments to find a Outfit
+     * @example
+     * // Get one Outfit
+     * const outfit = await prisma.outfit.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends OutfitFindFirstOrThrowArgs>(args?: SelectSubset<T, OutfitFindFirstOrThrowArgs<ExtArgs>>): Prisma__OutfitClient<$Result.GetResult<Prisma.$OutfitPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Outfits that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutfitFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Outfits
+     * const outfits = await prisma.outfit.findMany()
+     * 
+     * // Get first 10 Outfits
+     * const outfits = await prisma.outfit.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const outfitWithIdOnly = await prisma.outfit.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends OutfitFindManyArgs>(args?: SelectSubset<T, OutfitFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutfitPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Outfit.
+     * @param {OutfitCreateArgs} args - Arguments to create a Outfit.
+     * @example
+     * // Create one Outfit
+     * const Outfit = await prisma.outfit.create({
+     *   data: {
+     *     // ... data to create a Outfit
+     *   }
+     * })
+     * 
+     */
+    create<T extends OutfitCreateArgs>(args: SelectSubset<T, OutfitCreateArgs<ExtArgs>>): Prisma__OutfitClient<$Result.GetResult<Prisma.$OutfitPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Outfits.
+     * @param {OutfitCreateManyArgs} args - Arguments to create many Outfits.
+     * @example
+     * // Create many Outfits
+     * const outfit = await prisma.outfit.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends OutfitCreateManyArgs>(args?: SelectSubset<T, OutfitCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Outfits and returns the data saved in the database.
+     * @param {OutfitCreateManyAndReturnArgs} args - Arguments to create many Outfits.
+     * @example
+     * // Create many Outfits
+     * const outfit = await prisma.outfit.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Outfits and only return the `id`
+     * const outfitWithIdOnly = await prisma.outfit.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends OutfitCreateManyAndReturnArgs>(args?: SelectSubset<T, OutfitCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutfitPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Outfit.
+     * @param {OutfitDeleteArgs} args - Arguments to delete one Outfit.
+     * @example
+     * // Delete one Outfit
+     * const Outfit = await prisma.outfit.delete({
+     *   where: {
+     *     // ... filter to delete one Outfit
+     *   }
+     * })
+     * 
+     */
+    delete<T extends OutfitDeleteArgs>(args: SelectSubset<T, OutfitDeleteArgs<ExtArgs>>): Prisma__OutfitClient<$Result.GetResult<Prisma.$OutfitPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Outfit.
+     * @param {OutfitUpdateArgs} args - Arguments to update one Outfit.
+     * @example
+     * // Update one Outfit
+     * const outfit = await prisma.outfit.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends OutfitUpdateArgs>(args: SelectSubset<T, OutfitUpdateArgs<ExtArgs>>): Prisma__OutfitClient<$Result.GetResult<Prisma.$OutfitPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Outfits.
+     * @param {OutfitDeleteManyArgs} args - Arguments to filter Outfits to delete.
+     * @example
+     * // Delete a few Outfits
+     * const { count } = await prisma.outfit.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends OutfitDeleteManyArgs>(args?: SelectSubset<T, OutfitDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Outfits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutfitUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Outfits
+     * const outfit = await prisma.outfit.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends OutfitUpdateManyArgs>(args: SelectSubset<T, OutfitUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Outfits and returns the data updated in the database.
+     * @param {OutfitUpdateManyAndReturnArgs} args - Arguments to update many Outfits.
+     * @example
+     * // Update many Outfits
+     * const outfit = await prisma.outfit.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Outfits and only return the `id`
+     * const outfitWithIdOnly = await prisma.outfit.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends OutfitUpdateManyAndReturnArgs>(args: SelectSubset<T, OutfitUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutfitPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Outfit.
+     * @param {OutfitUpsertArgs} args - Arguments to update or create a Outfit.
+     * @example
+     * // Update or create a Outfit
+     * const outfit = await prisma.outfit.upsert({
+     *   create: {
+     *     // ... data to create a Outfit
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Outfit we want to update
+     *   }
+     * })
+     */
+    upsert<T extends OutfitUpsertArgs>(args: SelectSubset<T, OutfitUpsertArgs<ExtArgs>>): Prisma__OutfitClient<$Result.GetResult<Prisma.$OutfitPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Outfits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutfitCountArgs} args - Arguments to filter Outfits to count.
+     * @example
+     * // Count the number of Outfits
+     * const count = await prisma.outfit.count({
+     *   where: {
+     *     // ... the filter for the Outfits we want to count
+     *   }
+     * })
+    **/
+    count<T extends OutfitCountArgs>(
+      args?: Subset<T, OutfitCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], OutfitCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Outfit.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutfitAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends OutfitAggregateArgs>(args: Subset<T, OutfitAggregateArgs>): Prisma.PrismaPromise<GetOutfitAggregateType<T>>
+
+    /**
+     * Group by Outfit.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutfitGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends OutfitGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: OutfitGroupByArgs['orderBy'] }
+        : { orderBy?: OutfitGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, OutfitGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOutfitGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Outfit model
+   */
+  readonly fields: OutfitFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Outfit.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__OutfitClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    clothes<T extends Outfit$clothesArgs<ExtArgs> = {}>(args?: Subset<T, Outfit$clothesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutfitClothPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Outfit model
+   */
+  interface OutfitFieldRefs {
+    readonly id: FieldRef<"Outfit", 'String'>
+    readonly name: FieldRef<"Outfit", 'String'>
+    readonly userId: FieldRef<"Outfit", 'String'>
+    readonly description: FieldRef<"Outfit", 'String'>
+    readonly imageUrl: FieldRef<"Outfit", 'String'>
+    readonly createdAt: FieldRef<"Outfit", 'DateTime'>
+    readonly updatedAt: FieldRef<"Outfit", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Outfit findUnique
+   */
+  export type OutfitFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Outfit
+     */
+    select?: OutfitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Outfit
+     */
+    omit?: OutfitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitInclude<ExtArgs> | null
+    /**
+     * Filter, which Outfit to fetch.
+     */
+    where: OutfitWhereUniqueInput
+  }
+
+  /**
+   * Outfit findUniqueOrThrow
+   */
+  export type OutfitFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Outfit
+     */
+    select?: OutfitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Outfit
+     */
+    omit?: OutfitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitInclude<ExtArgs> | null
+    /**
+     * Filter, which Outfit to fetch.
+     */
+    where: OutfitWhereUniqueInput
+  }
+
+  /**
+   * Outfit findFirst
+   */
+  export type OutfitFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Outfit
+     */
+    select?: OutfitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Outfit
+     */
+    omit?: OutfitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitInclude<ExtArgs> | null
+    /**
+     * Filter, which Outfit to fetch.
+     */
+    where?: OutfitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Outfits to fetch.
+     */
+    orderBy?: OutfitOrderByWithRelationInput | OutfitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Outfits.
+     */
+    cursor?: OutfitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Outfits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Outfits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Outfits.
+     */
+    distinct?: OutfitScalarFieldEnum | OutfitScalarFieldEnum[]
+  }
+
+  /**
+   * Outfit findFirstOrThrow
+   */
+  export type OutfitFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Outfit
+     */
+    select?: OutfitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Outfit
+     */
+    omit?: OutfitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitInclude<ExtArgs> | null
+    /**
+     * Filter, which Outfit to fetch.
+     */
+    where?: OutfitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Outfits to fetch.
+     */
+    orderBy?: OutfitOrderByWithRelationInput | OutfitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Outfits.
+     */
+    cursor?: OutfitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Outfits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Outfits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Outfits.
+     */
+    distinct?: OutfitScalarFieldEnum | OutfitScalarFieldEnum[]
+  }
+
+  /**
+   * Outfit findMany
+   */
+  export type OutfitFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Outfit
+     */
+    select?: OutfitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Outfit
+     */
+    omit?: OutfitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitInclude<ExtArgs> | null
+    /**
+     * Filter, which Outfits to fetch.
+     */
+    where?: OutfitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Outfits to fetch.
+     */
+    orderBy?: OutfitOrderByWithRelationInput | OutfitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Outfits.
+     */
+    cursor?: OutfitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Outfits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Outfits.
+     */
+    skip?: number
+    distinct?: OutfitScalarFieldEnum | OutfitScalarFieldEnum[]
+  }
+
+  /**
+   * Outfit create
+   */
+  export type OutfitCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Outfit
+     */
+    select?: OutfitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Outfit
+     */
+    omit?: OutfitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Outfit.
+     */
+    data: XOR<OutfitCreateInput, OutfitUncheckedCreateInput>
+  }
+
+  /**
+   * Outfit createMany
+   */
+  export type OutfitCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Outfits.
+     */
+    data: OutfitCreateManyInput | OutfitCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Outfit createManyAndReturn
+   */
+  export type OutfitCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Outfit
+     */
+    select?: OutfitSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Outfit
+     */
+    omit?: OutfitOmit<ExtArgs> | null
+    /**
+     * The data used to create many Outfits.
+     */
+    data: OutfitCreateManyInput | OutfitCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Outfit update
+   */
+  export type OutfitUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Outfit
+     */
+    select?: OutfitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Outfit
+     */
+    omit?: OutfitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Outfit.
+     */
+    data: XOR<OutfitUpdateInput, OutfitUncheckedUpdateInput>
+    /**
+     * Choose, which Outfit to update.
+     */
+    where: OutfitWhereUniqueInput
+  }
+
+  /**
+   * Outfit updateMany
+   */
+  export type OutfitUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Outfits.
+     */
+    data: XOR<OutfitUpdateManyMutationInput, OutfitUncheckedUpdateManyInput>
+    /**
+     * Filter which Outfits to update
+     */
+    where?: OutfitWhereInput
+    /**
+     * Limit how many Outfits to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Outfit updateManyAndReturn
+   */
+  export type OutfitUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Outfit
+     */
+    select?: OutfitSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Outfit
+     */
+    omit?: OutfitOmit<ExtArgs> | null
+    /**
+     * The data used to update Outfits.
+     */
+    data: XOR<OutfitUpdateManyMutationInput, OutfitUncheckedUpdateManyInput>
+    /**
+     * Filter which Outfits to update
+     */
+    where?: OutfitWhereInput
+    /**
+     * Limit how many Outfits to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Outfit upsert
+   */
+  export type OutfitUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Outfit
+     */
+    select?: OutfitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Outfit
+     */
+    omit?: OutfitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Outfit to update in case it exists.
+     */
+    where: OutfitWhereUniqueInput
+    /**
+     * In case the Outfit found by the `where` argument doesn't exist, create a new Outfit with this data.
+     */
+    create: XOR<OutfitCreateInput, OutfitUncheckedCreateInput>
+    /**
+     * In case the Outfit was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<OutfitUpdateInput, OutfitUncheckedUpdateInput>
+  }
+
+  /**
+   * Outfit delete
+   */
+  export type OutfitDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Outfit
+     */
+    select?: OutfitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Outfit
+     */
+    omit?: OutfitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitInclude<ExtArgs> | null
+    /**
+     * Filter which Outfit to delete.
+     */
+    where: OutfitWhereUniqueInput
+  }
+
+  /**
+   * Outfit deleteMany
+   */
+  export type OutfitDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Outfits to delete
+     */
+    where?: OutfitWhereInput
+    /**
+     * Limit how many Outfits to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Outfit.clothes
+   */
+  export type Outfit$clothesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutfitCloth
+     */
+    select?: OutfitClothSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutfitCloth
+     */
+    omit?: OutfitClothOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitClothInclude<ExtArgs> | null
+    where?: OutfitClothWhereInput
+    orderBy?: OutfitClothOrderByWithRelationInput | OutfitClothOrderByWithRelationInput[]
+    cursor?: OutfitClothWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: OutfitClothScalarFieldEnum | OutfitClothScalarFieldEnum[]
+  }
+
+  /**
+   * Outfit without action
+   */
+  export type OutfitDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Outfit
+     */
+    select?: OutfitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Outfit
+     */
+    omit?: OutfitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model OutfitCloth
+   */
+
+  export type AggregateOutfitCloth = {
+    _count: OutfitClothCountAggregateOutputType | null
+    _min: OutfitClothMinAggregateOutputType | null
+    _max: OutfitClothMaxAggregateOutputType | null
+  }
+
+  export type OutfitClothMinAggregateOutputType = {
+    id: string | null
+    outfitId: string | null
+    clothId: string | null
+  }
+
+  export type OutfitClothMaxAggregateOutputType = {
+    id: string | null
+    outfitId: string | null
+    clothId: string | null
+  }
+
+  export type OutfitClothCountAggregateOutputType = {
+    id: number
+    outfitId: number
+    clothId: number
+    _all: number
+  }
+
+
+  export type OutfitClothMinAggregateInputType = {
+    id?: true
+    outfitId?: true
+    clothId?: true
+  }
+
+  export type OutfitClothMaxAggregateInputType = {
+    id?: true
+    outfitId?: true
+    clothId?: true
+  }
+
+  export type OutfitClothCountAggregateInputType = {
+    id?: true
+    outfitId?: true
+    clothId?: true
+    _all?: true
+  }
+
+  export type OutfitClothAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OutfitCloth to aggregate.
+     */
+    where?: OutfitClothWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OutfitCloths to fetch.
+     */
+    orderBy?: OutfitClothOrderByWithRelationInput | OutfitClothOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: OutfitClothWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OutfitCloths from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OutfitCloths.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned OutfitCloths
+    **/
+    _count?: true | OutfitClothCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: OutfitClothMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: OutfitClothMaxAggregateInputType
+  }
+
+  export type GetOutfitClothAggregateType<T extends OutfitClothAggregateArgs> = {
+        [P in keyof T & keyof AggregateOutfitCloth]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOutfitCloth[P]>
+      : GetScalarType<T[P], AggregateOutfitCloth[P]>
+  }
+
+
+
+
+  export type OutfitClothGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OutfitClothWhereInput
+    orderBy?: OutfitClothOrderByWithAggregationInput | OutfitClothOrderByWithAggregationInput[]
+    by: OutfitClothScalarFieldEnum[] | OutfitClothScalarFieldEnum
+    having?: OutfitClothScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: OutfitClothCountAggregateInputType | true
+    _min?: OutfitClothMinAggregateInputType
+    _max?: OutfitClothMaxAggregateInputType
+  }
+
+  export type OutfitClothGroupByOutputType = {
+    id: string
+    outfitId: string
+    clothId: string
+    _count: OutfitClothCountAggregateOutputType | null
+    _min: OutfitClothMinAggregateOutputType | null
+    _max: OutfitClothMaxAggregateOutputType | null
+  }
+
+  type GetOutfitClothGroupByPayload<T extends OutfitClothGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<OutfitClothGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof OutfitClothGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], OutfitClothGroupByOutputType[P]>
+            : GetScalarType<T[P], OutfitClothGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type OutfitClothSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    outfitId?: boolean
+    clothId?: boolean
+    outfit?: boolean | OutfitDefaultArgs<ExtArgs>
+    cloth?: boolean | ClothDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["outfitCloth"]>
+
+  export type OutfitClothSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    outfitId?: boolean
+    clothId?: boolean
+    outfit?: boolean | OutfitDefaultArgs<ExtArgs>
+    cloth?: boolean | ClothDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["outfitCloth"]>
+
+  export type OutfitClothSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    outfitId?: boolean
+    clothId?: boolean
+    outfit?: boolean | OutfitDefaultArgs<ExtArgs>
+    cloth?: boolean | ClothDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["outfitCloth"]>
+
+  export type OutfitClothSelectScalar = {
+    id?: boolean
+    outfitId?: boolean
+    clothId?: boolean
+  }
+
+  export type OutfitClothOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "outfitId" | "clothId", ExtArgs["result"]["outfitCloth"]>
+  export type OutfitClothInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    outfit?: boolean | OutfitDefaultArgs<ExtArgs>
+    cloth?: boolean | ClothDefaultArgs<ExtArgs>
+  }
+  export type OutfitClothIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    outfit?: boolean | OutfitDefaultArgs<ExtArgs>
+    cloth?: boolean | ClothDefaultArgs<ExtArgs>
+  }
+  export type OutfitClothIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    outfit?: boolean | OutfitDefaultArgs<ExtArgs>
+    cloth?: boolean | ClothDefaultArgs<ExtArgs>
+  }
+
+  export type $OutfitClothPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "OutfitCloth"
+    objects: {
+      outfit: Prisma.$OutfitPayload<ExtArgs>
+      cloth: Prisma.$ClothPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      outfitId: string
+      clothId: string
+    }, ExtArgs["result"]["outfitCloth"]>
+    composites: {}
+  }
+
+  type OutfitClothGetPayload<S extends boolean | null | undefined | OutfitClothDefaultArgs> = $Result.GetResult<Prisma.$OutfitClothPayload, S>
+
+  type OutfitClothCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OutfitClothFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OutfitClothCountAggregateInputType | true
+    }
+
+  export interface OutfitClothDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OutfitCloth'], meta: { name: 'OutfitCloth' } }
+    /**
+     * Find zero or one OutfitCloth that matches the filter.
+     * @param {OutfitClothFindUniqueArgs} args - Arguments to find a OutfitCloth
+     * @example
+     * // Get one OutfitCloth
+     * const outfitCloth = await prisma.outfitCloth.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends OutfitClothFindUniqueArgs>(args: SelectSubset<T, OutfitClothFindUniqueArgs<ExtArgs>>): Prisma__OutfitClothClient<$Result.GetResult<Prisma.$OutfitClothPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one OutfitCloth that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {OutfitClothFindUniqueOrThrowArgs} args - Arguments to find a OutfitCloth
+     * @example
+     * // Get one OutfitCloth
+     * const outfitCloth = await prisma.outfitCloth.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends OutfitClothFindUniqueOrThrowArgs>(args: SelectSubset<T, OutfitClothFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OutfitClothClient<$Result.GetResult<Prisma.$OutfitClothPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OutfitCloth that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutfitClothFindFirstArgs} args - Arguments to find a OutfitCloth
+     * @example
+     * // Get one OutfitCloth
+     * const outfitCloth = await prisma.outfitCloth.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends OutfitClothFindFirstArgs>(args?: SelectSubset<T, OutfitClothFindFirstArgs<ExtArgs>>): Prisma__OutfitClothClient<$Result.GetResult<Prisma.$OutfitClothPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OutfitCloth that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutfitClothFindFirstOrThrowArgs} args - Arguments to find a OutfitCloth
+     * @example
+     * // Get one OutfitCloth
+     * const outfitCloth = await prisma.outfitCloth.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends OutfitClothFindFirstOrThrowArgs>(args?: SelectSubset<T, OutfitClothFindFirstOrThrowArgs<ExtArgs>>): Prisma__OutfitClothClient<$Result.GetResult<Prisma.$OutfitClothPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more OutfitCloths that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutfitClothFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all OutfitCloths
+     * const outfitCloths = await prisma.outfitCloth.findMany()
+     * 
+     * // Get first 10 OutfitCloths
+     * const outfitCloths = await prisma.outfitCloth.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const outfitClothWithIdOnly = await prisma.outfitCloth.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends OutfitClothFindManyArgs>(args?: SelectSubset<T, OutfitClothFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutfitClothPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a OutfitCloth.
+     * @param {OutfitClothCreateArgs} args - Arguments to create a OutfitCloth.
+     * @example
+     * // Create one OutfitCloth
+     * const OutfitCloth = await prisma.outfitCloth.create({
+     *   data: {
+     *     // ... data to create a OutfitCloth
+     *   }
+     * })
+     * 
+     */
+    create<T extends OutfitClothCreateArgs>(args: SelectSubset<T, OutfitClothCreateArgs<ExtArgs>>): Prisma__OutfitClothClient<$Result.GetResult<Prisma.$OutfitClothPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many OutfitCloths.
+     * @param {OutfitClothCreateManyArgs} args - Arguments to create many OutfitCloths.
+     * @example
+     * // Create many OutfitCloths
+     * const outfitCloth = await prisma.outfitCloth.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends OutfitClothCreateManyArgs>(args?: SelectSubset<T, OutfitClothCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many OutfitCloths and returns the data saved in the database.
+     * @param {OutfitClothCreateManyAndReturnArgs} args - Arguments to create many OutfitCloths.
+     * @example
+     * // Create many OutfitCloths
+     * const outfitCloth = await prisma.outfitCloth.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many OutfitCloths and only return the `id`
+     * const outfitClothWithIdOnly = await prisma.outfitCloth.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends OutfitClothCreateManyAndReturnArgs>(args?: SelectSubset<T, OutfitClothCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutfitClothPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a OutfitCloth.
+     * @param {OutfitClothDeleteArgs} args - Arguments to delete one OutfitCloth.
+     * @example
+     * // Delete one OutfitCloth
+     * const OutfitCloth = await prisma.outfitCloth.delete({
+     *   where: {
+     *     // ... filter to delete one OutfitCloth
+     *   }
+     * })
+     * 
+     */
+    delete<T extends OutfitClothDeleteArgs>(args: SelectSubset<T, OutfitClothDeleteArgs<ExtArgs>>): Prisma__OutfitClothClient<$Result.GetResult<Prisma.$OutfitClothPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one OutfitCloth.
+     * @param {OutfitClothUpdateArgs} args - Arguments to update one OutfitCloth.
+     * @example
+     * // Update one OutfitCloth
+     * const outfitCloth = await prisma.outfitCloth.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends OutfitClothUpdateArgs>(args: SelectSubset<T, OutfitClothUpdateArgs<ExtArgs>>): Prisma__OutfitClothClient<$Result.GetResult<Prisma.$OutfitClothPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more OutfitCloths.
+     * @param {OutfitClothDeleteManyArgs} args - Arguments to filter OutfitCloths to delete.
+     * @example
+     * // Delete a few OutfitCloths
+     * const { count } = await prisma.outfitCloth.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends OutfitClothDeleteManyArgs>(args?: SelectSubset<T, OutfitClothDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OutfitCloths.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutfitClothUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many OutfitCloths
+     * const outfitCloth = await prisma.outfitCloth.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends OutfitClothUpdateManyArgs>(args: SelectSubset<T, OutfitClothUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OutfitCloths and returns the data updated in the database.
+     * @param {OutfitClothUpdateManyAndReturnArgs} args - Arguments to update many OutfitCloths.
+     * @example
+     * // Update many OutfitCloths
+     * const outfitCloth = await prisma.outfitCloth.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more OutfitCloths and only return the `id`
+     * const outfitClothWithIdOnly = await prisma.outfitCloth.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends OutfitClothUpdateManyAndReturnArgs>(args: SelectSubset<T, OutfitClothUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OutfitClothPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one OutfitCloth.
+     * @param {OutfitClothUpsertArgs} args - Arguments to update or create a OutfitCloth.
+     * @example
+     * // Update or create a OutfitCloth
+     * const outfitCloth = await prisma.outfitCloth.upsert({
+     *   create: {
+     *     // ... data to create a OutfitCloth
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the OutfitCloth we want to update
+     *   }
+     * })
+     */
+    upsert<T extends OutfitClothUpsertArgs>(args: SelectSubset<T, OutfitClothUpsertArgs<ExtArgs>>): Prisma__OutfitClothClient<$Result.GetResult<Prisma.$OutfitClothPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of OutfitCloths.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutfitClothCountArgs} args - Arguments to filter OutfitCloths to count.
+     * @example
+     * // Count the number of OutfitCloths
+     * const count = await prisma.outfitCloth.count({
+     *   where: {
+     *     // ... the filter for the OutfitCloths we want to count
+     *   }
+     * })
+    **/
+    count<T extends OutfitClothCountArgs>(
+      args?: Subset<T, OutfitClothCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], OutfitClothCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a OutfitCloth.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutfitClothAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends OutfitClothAggregateArgs>(args: Subset<T, OutfitClothAggregateArgs>): Prisma.PrismaPromise<GetOutfitClothAggregateType<T>>
+
+    /**
+     * Group by OutfitCloth.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OutfitClothGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends OutfitClothGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: OutfitClothGroupByArgs['orderBy'] }
+        : { orderBy?: OutfitClothGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, OutfitClothGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOutfitClothGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the OutfitCloth model
+   */
+  readonly fields: OutfitClothFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for OutfitCloth.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__OutfitClothClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    outfit<T extends OutfitDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OutfitDefaultArgs<ExtArgs>>): Prisma__OutfitClient<$Result.GetResult<Prisma.$OutfitPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    cloth<T extends ClothDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClothDefaultArgs<ExtArgs>>): Prisma__ClothClient<$Result.GetResult<Prisma.$ClothPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the OutfitCloth model
+   */
+  interface OutfitClothFieldRefs {
+    readonly id: FieldRef<"OutfitCloth", 'String'>
+    readonly outfitId: FieldRef<"OutfitCloth", 'String'>
+    readonly clothId: FieldRef<"OutfitCloth", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * OutfitCloth findUnique
+   */
+  export type OutfitClothFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutfitCloth
+     */
+    select?: OutfitClothSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutfitCloth
+     */
+    omit?: OutfitClothOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitClothInclude<ExtArgs> | null
+    /**
+     * Filter, which OutfitCloth to fetch.
+     */
+    where: OutfitClothWhereUniqueInput
+  }
+
+  /**
+   * OutfitCloth findUniqueOrThrow
+   */
+  export type OutfitClothFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutfitCloth
+     */
+    select?: OutfitClothSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutfitCloth
+     */
+    omit?: OutfitClothOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitClothInclude<ExtArgs> | null
+    /**
+     * Filter, which OutfitCloth to fetch.
+     */
+    where: OutfitClothWhereUniqueInput
+  }
+
+  /**
+   * OutfitCloth findFirst
+   */
+  export type OutfitClothFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutfitCloth
+     */
+    select?: OutfitClothSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutfitCloth
+     */
+    omit?: OutfitClothOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitClothInclude<ExtArgs> | null
+    /**
+     * Filter, which OutfitCloth to fetch.
+     */
+    where?: OutfitClothWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OutfitCloths to fetch.
+     */
+    orderBy?: OutfitClothOrderByWithRelationInput | OutfitClothOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OutfitCloths.
+     */
+    cursor?: OutfitClothWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OutfitCloths from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OutfitCloths.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OutfitCloths.
+     */
+    distinct?: OutfitClothScalarFieldEnum | OutfitClothScalarFieldEnum[]
+  }
+
+  /**
+   * OutfitCloth findFirstOrThrow
+   */
+  export type OutfitClothFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutfitCloth
+     */
+    select?: OutfitClothSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutfitCloth
+     */
+    omit?: OutfitClothOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitClothInclude<ExtArgs> | null
+    /**
+     * Filter, which OutfitCloth to fetch.
+     */
+    where?: OutfitClothWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OutfitCloths to fetch.
+     */
+    orderBy?: OutfitClothOrderByWithRelationInput | OutfitClothOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OutfitCloths.
+     */
+    cursor?: OutfitClothWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OutfitCloths from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OutfitCloths.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OutfitCloths.
+     */
+    distinct?: OutfitClothScalarFieldEnum | OutfitClothScalarFieldEnum[]
+  }
+
+  /**
+   * OutfitCloth findMany
+   */
+  export type OutfitClothFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutfitCloth
+     */
+    select?: OutfitClothSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutfitCloth
+     */
+    omit?: OutfitClothOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitClothInclude<ExtArgs> | null
+    /**
+     * Filter, which OutfitCloths to fetch.
+     */
+    where?: OutfitClothWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OutfitCloths to fetch.
+     */
+    orderBy?: OutfitClothOrderByWithRelationInput | OutfitClothOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing OutfitCloths.
+     */
+    cursor?: OutfitClothWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OutfitCloths from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OutfitCloths.
+     */
+    skip?: number
+    distinct?: OutfitClothScalarFieldEnum | OutfitClothScalarFieldEnum[]
+  }
+
+  /**
+   * OutfitCloth create
+   */
+  export type OutfitClothCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutfitCloth
+     */
+    select?: OutfitClothSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutfitCloth
+     */
+    omit?: OutfitClothOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitClothInclude<ExtArgs> | null
+    /**
+     * The data needed to create a OutfitCloth.
+     */
+    data: XOR<OutfitClothCreateInput, OutfitClothUncheckedCreateInput>
+  }
+
+  /**
+   * OutfitCloth createMany
+   */
+  export type OutfitClothCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many OutfitCloths.
+     */
+    data: OutfitClothCreateManyInput | OutfitClothCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OutfitCloth createManyAndReturn
+   */
+  export type OutfitClothCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutfitCloth
+     */
+    select?: OutfitClothSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutfitCloth
+     */
+    omit?: OutfitClothOmit<ExtArgs> | null
+    /**
+     * The data used to create many OutfitCloths.
+     */
+    data: OutfitClothCreateManyInput | OutfitClothCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitClothIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * OutfitCloth update
+   */
+  export type OutfitClothUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutfitCloth
+     */
+    select?: OutfitClothSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutfitCloth
+     */
+    omit?: OutfitClothOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitClothInclude<ExtArgs> | null
+    /**
+     * The data needed to update a OutfitCloth.
+     */
+    data: XOR<OutfitClothUpdateInput, OutfitClothUncheckedUpdateInput>
+    /**
+     * Choose, which OutfitCloth to update.
+     */
+    where: OutfitClothWhereUniqueInput
+  }
+
+  /**
+   * OutfitCloth updateMany
+   */
+  export type OutfitClothUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update OutfitCloths.
+     */
+    data: XOR<OutfitClothUpdateManyMutationInput, OutfitClothUncheckedUpdateManyInput>
+    /**
+     * Filter which OutfitCloths to update
+     */
+    where?: OutfitClothWhereInput
+    /**
+     * Limit how many OutfitCloths to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * OutfitCloth updateManyAndReturn
+   */
+  export type OutfitClothUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutfitCloth
+     */
+    select?: OutfitClothSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutfitCloth
+     */
+    omit?: OutfitClothOmit<ExtArgs> | null
+    /**
+     * The data used to update OutfitCloths.
+     */
+    data: XOR<OutfitClothUpdateManyMutationInput, OutfitClothUncheckedUpdateManyInput>
+    /**
+     * Filter which OutfitCloths to update
+     */
+    where?: OutfitClothWhereInput
+    /**
+     * Limit how many OutfitCloths to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitClothIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * OutfitCloth upsert
+   */
+  export type OutfitClothUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutfitCloth
+     */
+    select?: OutfitClothSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutfitCloth
+     */
+    omit?: OutfitClothOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitClothInclude<ExtArgs> | null
+    /**
+     * The filter to search for the OutfitCloth to update in case it exists.
+     */
+    where: OutfitClothWhereUniqueInput
+    /**
+     * In case the OutfitCloth found by the `where` argument doesn't exist, create a new OutfitCloth with this data.
+     */
+    create: XOR<OutfitClothCreateInput, OutfitClothUncheckedCreateInput>
+    /**
+     * In case the OutfitCloth was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<OutfitClothUpdateInput, OutfitClothUncheckedUpdateInput>
+  }
+
+  /**
+   * OutfitCloth delete
+   */
+  export type OutfitClothDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutfitCloth
+     */
+    select?: OutfitClothSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutfitCloth
+     */
+    omit?: OutfitClothOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitClothInclude<ExtArgs> | null
+    /**
+     * Filter which OutfitCloth to delete.
+     */
+    where: OutfitClothWhereUniqueInput
+  }
+
+  /**
+   * OutfitCloth deleteMany
+   */
+  export type OutfitClothDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OutfitCloths to delete
+     */
+    where?: OutfitClothWhereInput
+    /**
+     * Limit how many OutfitCloths to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * OutfitCloth without action
+   */
+  export type OutfitClothDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OutfitCloth
+     */
+    select?: OutfitClothSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OutfitCloth
+     */
+    omit?: OutfitClothOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OutfitClothInclude<ExtArgs> | null
   }
 
 
@@ -3208,6 +5673,28 @@ export namespace Prisma {
   };
 
   export type ClothScalarFieldEnum = (typeof ClothScalarFieldEnum)[keyof typeof ClothScalarFieldEnum]
+
+
+  export const OutfitScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    userId: 'userId',
+    description: 'description',
+    imageUrl: 'imageUrl',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type OutfitScalarFieldEnum = (typeof OutfitScalarFieldEnum)[keyof typeof OutfitScalarFieldEnum]
+
+
+  export const OutfitClothScalarFieldEnum: {
+    id: 'id',
+    outfitId: 'outfitId',
+    clothId: 'clothId'
+  };
+
+  export type OutfitClothScalarFieldEnum = (typeof OutfitClothScalarFieldEnum)[keyof typeof OutfitClothScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -3295,6 +5782,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     clothes?: ClothListRelationFilter
+    outfits?: OutfitListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -3305,6 +5793,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     clothes?: ClothOrderByRelationAggregateInput
+    outfits?: OutfitOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -3318,6 +5807,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     clothes?: ClothListRelationFilter
+    outfits?: OutfitListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -3357,6 +5847,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Cloth"> | Date | string
     updatedAt?: DateTimeFilter<"Cloth"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    outfits?: OutfitClothListRelationFilter
   }
 
   export type ClothOrderByWithRelationInput = {
@@ -3369,6 +5860,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
+    outfits?: OutfitClothOrderByRelationAggregateInput
   }
 
   export type ClothWhereUniqueInput = Prisma.AtLeast<{
@@ -3384,6 +5876,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Cloth"> | Date | string
     updatedAt?: DateTimeFilter<"Cloth"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    outfits?: OutfitClothListRelationFilter
   }, "id">
 
   export type ClothOrderByWithAggregationInput = {
@@ -3414,6 +5907,122 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Cloth"> | Date | string
   }
 
+  export type OutfitWhereInput = {
+    AND?: OutfitWhereInput | OutfitWhereInput[]
+    OR?: OutfitWhereInput[]
+    NOT?: OutfitWhereInput | OutfitWhereInput[]
+    id?: StringFilter<"Outfit"> | string
+    name?: StringFilter<"Outfit"> | string
+    userId?: StringFilter<"Outfit"> | string
+    description?: StringNullableFilter<"Outfit"> | string | null
+    imageUrl?: StringNullableFilter<"Outfit"> | string | null
+    createdAt?: DateTimeFilter<"Outfit"> | Date | string
+    updatedAt?: DateTimeFilter<"Outfit"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    clothes?: OutfitClothListRelationFilter
+  }
+
+  export type OutfitOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    description?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    clothes?: OutfitClothOrderByRelationAggregateInput
+  }
+
+  export type OutfitWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: OutfitWhereInput | OutfitWhereInput[]
+    OR?: OutfitWhereInput[]
+    NOT?: OutfitWhereInput | OutfitWhereInput[]
+    name?: StringFilter<"Outfit"> | string
+    userId?: StringFilter<"Outfit"> | string
+    description?: StringNullableFilter<"Outfit"> | string | null
+    imageUrl?: StringNullableFilter<"Outfit"> | string | null
+    createdAt?: DateTimeFilter<"Outfit"> | Date | string
+    updatedAt?: DateTimeFilter<"Outfit"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    clothes?: OutfitClothListRelationFilter
+  }, "id">
+
+  export type OutfitOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    description?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: OutfitCountOrderByAggregateInput
+    _max?: OutfitMaxOrderByAggregateInput
+    _min?: OutfitMinOrderByAggregateInput
+  }
+
+  export type OutfitScalarWhereWithAggregatesInput = {
+    AND?: OutfitScalarWhereWithAggregatesInput | OutfitScalarWhereWithAggregatesInput[]
+    OR?: OutfitScalarWhereWithAggregatesInput[]
+    NOT?: OutfitScalarWhereWithAggregatesInput | OutfitScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Outfit"> | string
+    name?: StringWithAggregatesFilter<"Outfit"> | string
+    userId?: StringWithAggregatesFilter<"Outfit"> | string
+    description?: StringNullableWithAggregatesFilter<"Outfit"> | string | null
+    imageUrl?: StringNullableWithAggregatesFilter<"Outfit"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Outfit"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Outfit"> | Date | string
+  }
+
+  export type OutfitClothWhereInput = {
+    AND?: OutfitClothWhereInput | OutfitClothWhereInput[]
+    OR?: OutfitClothWhereInput[]
+    NOT?: OutfitClothWhereInput | OutfitClothWhereInput[]
+    id?: StringFilter<"OutfitCloth"> | string
+    outfitId?: StringFilter<"OutfitCloth"> | string
+    clothId?: StringFilter<"OutfitCloth"> | string
+    outfit?: XOR<OutfitScalarRelationFilter, OutfitWhereInput>
+    cloth?: XOR<ClothScalarRelationFilter, ClothWhereInput>
+  }
+
+  export type OutfitClothOrderByWithRelationInput = {
+    id?: SortOrder
+    outfitId?: SortOrder
+    clothId?: SortOrder
+    outfit?: OutfitOrderByWithRelationInput
+    cloth?: ClothOrderByWithRelationInput
+  }
+
+  export type OutfitClothWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: OutfitClothWhereInput | OutfitClothWhereInput[]
+    OR?: OutfitClothWhereInput[]
+    NOT?: OutfitClothWhereInput | OutfitClothWhereInput[]
+    outfitId?: StringFilter<"OutfitCloth"> | string
+    clothId?: StringFilter<"OutfitCloth"> | string
+    outfit?: XOR<OutfitScalarRelationFilter, OutfitWhereInput>
+    cloth?: XOR<ClothScalarRelationFilter, ClothWhereInput>
+  }, "id">
+
+  export type OutfitClothOrderByWithAggregationInput = {
+    id?: SortOrder
+    outfitId?: SortOrder
+    clothId?: SortOrder
+    _count?: OutfitClothCountOrderByAggregateInput
+    _max?: OutfitClothMaxOrderByAggregateInput
+    _min?: OutfitClothMinOrderByAggregateInput
+  }
+
+  export type OutfitClothScalarWhereWithAggregatesInput = {
+    AND?: OutfitClothScalarWhereWithAggregatesInput | OutfitClothScalarWhereWithAggregatesInput[]
+    OR?: OutfitClothScalarWhereWithAggregatesInput[]
+    NOT?: OutfitClothScalarWhereWithAggregatesInput | OutfitClothScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"OutfitCloth"> | string
+    outfitId?: StringWithAggregatesFilter<"OutfitCloth"> | string
+    clothId?: StringWithAggregatesFilter<"OutfitCloth"> | string
+  }
+
   export type UserCreateInput = {
     id?: string
     email: string
@@ -3422,6 +6031,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clothes?: ClothCreateNestedManyWithoutUserInput
+    outfits?: OutfitCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -3432,6 +6042,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     clothes?: ClothUncheckedCreateNestedManyWithoutUserInput
+    outfits?: OutfitUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -3442,6 +6053,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clothes?: ClothUpdateManyWithoutUserNestedInput
+    outfits?: OutfitUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -3452,6 +6064,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     clothes?: ClothUncheckedUpdateManyWithoutUserNestedInput
+    outfits?: OutfitUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -3490,6 +6103,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutClothesInput
+    outfits?: OutfitClothCreateNestedManyWithoutClothInput
   }
 
   export type ClothUncheckedCreateInput = {
@@ -3501,6 +6115,7 @@ export namespace Prisma {
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    outfits?: OutfitClothUncheckedCreateNestedManyWithoutClothInput
   }
 
   export type ClothUpdateInput = {
@@ -3512,6 +6127,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutClothesNestedInput
+    outfits?: OutfitClothUpdateManyWithoutClothNestedInput
   }
 
   export type ClothUncheckedUpdateInput = {
@@ -3523,6 +6139,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    outfits?: OutfitClothUncheckedUpdateManyWithoutClothNestedInput
   }
 
   export type ClothCreateManyInput = {
@@ -3555,6 +6172,119 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OutfitCreateInput = {
+    id?: string
+    name: string
+    description?: string | null
+    imageUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutOutfitsInput
+    clothes?: OutfitClothCreateNestedManyWithoutOutfitInput
+  }
+
+  export type OutfitUncheckedCreateInput = {
+    id?: string
+    name: string
+    userId: string
+    description?: string | null
+    imageUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    clothes?: OutfitClothUncheckedCreateNestedManyWithoutOutfitInput
+  }
+
+  export type OutfitUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutOutfitsNestedInput
+    clothes?: OutfitClothUpdateManyWithoutOutfitNestedInput
+  }
+
+  export type OutfitUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    clothes?: OutfitClothUncheckedUpdateManyWithoutOutfitNestedInput
+  }
+
+  export type OutfitCreateManyInput = {
+    id?: string
+    name: string
+    userId: string
+    description?: string | null
+    imageUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type OutfitUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OutfitUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OutfitClothCreateInput = {
+    id?: string
+    outfit: OutfitCreateNestedOneWithoutClothesInput
+    cloth: ClothCreateNestedOneWithoutOutfitsInput
+  }
+
+  export type OutfitClothUncheckedCreateInput = {
+    id?: string
+    outfitId: string
+    clothId: string
+  }
+
+  export type OutfitClothUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    outfit?: OutfitUpdateOneRequiredWithoutClothesNestedInput
+    cloth?: ClothUpdateOneRequiredWithoutOutfitsNestedInput
+  }
+
+  export type OutfitClothUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    outfitId?: StringFieldUpdateOperationsInput | string
+    clothId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type OutfitClothCreateManyInput = {
+    id?: string
+    outfitId: string
+    clothId: string
+  }
+
+  export type OutfitClothUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type OutfitClothUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    outfitId?: StringFieldUpdateOperationsInput | string
+    clothId?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -3604,12 +6334,22 @@ export namespace Prisma {
     none?: ClothWhereInput
   }
 
+  export type OutfitListRelationFilter = {
+    every?: OutfitWhereInput
+    some?: OutfitWhereInput
+    none?: OutfitWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
   export type ClothOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type OutfitOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -3695,6 +6435,16 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
+  export type OutfitClothListRelationFilter = {
+    every?: OutfitClothWhereInput
+    some?: OutfitClothWhereInput
+    none?: OutfitClothWhereInput
+  }
+
+  export type OutfitClothOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type ClothCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -3728,6 +6478,64 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type OutfitCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    description?: SortOrder
+    imageUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type OutfitMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    description?: SortOrder
+    imageUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type OutfitMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    userId?: SortOrder
+    description?: SortOrder
+    imageUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type OutfitScalarRelationFilter = {
+    is?: OutfitWhereInput
+    isNot?: OutfitWhereInput
+  }
+
+  export type ClothScalarRelationFilter = {
+    is?: ClothWhereInput
+    isNot?: ClothWhereInput
+  }
+
+  export type OutfitClothCountOrderByAggregateInput = {
+    id?: SortOrder
+    outfitId?: SortOrder
+    clothId?: SortOrder
+  }
+
+  export type OutfitClothMaxOrderByAggregateInput = {
+    id?: SortOrder
+    outfitId?: SortOrder
+    clothId?: SortOrder
+  }
+
+  export type OutfitClothMinOrderByAggregateInput = {
+    id?: SortOrder
+    outfitId?: SortOrder
+    clothId?: SortOrder
+  }
+
   export type ClothCreateNestedManyWithoutUserInput = {
     create?: XOR<ClothCreateWithoutUserInput, ClothUncheckedCreateWithoutUserInput> | ClothCreateWithoutUserInput[] | ClothUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ClothCreateOrConnectWithoutUserInput | ClothCreateOrConnectWithoutUserInput[]
@@ -3735,11 +6543,25 @@ export namespace Prisma {
     connect?: ClothWhereUniqueInput | ClothWhereUniqueInput[]
   }
 
+  export type OutfitCreateNestedManyWithoutUserInput = {
+    create?: XOR<OutfitCreateWithoutUserInput, OutfitUncheckedCreateWithoutUserInput> | OutfitCreateWithoutUserInput[] | OutfitUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: OutfitCreateOrConnectWithoutUserInput | OutfitCreateOrConnectWithoutUserInput[]
+    createMany?: OutfitCreateManyUserInputEnvelope
+    connect?: OutfitWhereUniqueInput | OutfitWhereUniqueInput[]
+  }
+
   export type ClothUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<ClothCreateWithoutUserInput, ClothUncheckedCreateWithoutUserInput> | ClothCreateWithoutUserInput[] | ClothUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ClothCreateOrConnectWithoutUserInput | ClothCreateOrConnectWithoutUserInput[]
     createMany?: ClothCreateManyUserInputEnvelope
     connect?: ClothWhereUniqueInput | ClothWhereUniqueInput[]
+  }
+
+  export type OutfitUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<OutfitCreateWithoutUserInput, OutfitUncheckedCreateWithoutUserInput> | OutfitCreateWithoutUserInput[] | OutfitUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: OutfitCreateOrConnectWithoutUserInput | OutfitCreateOrConnectWithoutUserInput[]
+    createMany?: OutfitCreateManyUserInputEnvelope
+    connect?: OutfitWhereUniqueInput | OutfitWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -3768,6 +6590,20 @@ export namespace Prisma {
     deleteMany?: ClothScalarWhereInput | ClothScalarWhereInput[]
   }
 
+  export type OutfitUpdateManyWithoutUserNestedInput = {
+    create?: XOR<OutfitCreateWithoutUserInput, OutfitUncheckedCreateWithoutUserInput> | OutfitCreateWithoutUserInput[] | OutfitUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: OutfitCreateOrConnectWithoutUserInput | OutfitCreateOrConnectWithoutUserInput[]
+    upsert?: OutfitUpsertWithWhereUniqueWithoutUserInput | OutfitUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: OutfitCreateManyUserInputEnvelope
+    set?: OutfitWhereUniqueInput | OutfitWhereUniqueInput[]
+    disconnect?: OutfitWhereUniqueInput | OutfitWhereUniqueInput[]
+    delete?: OutfitWhereUniqueInput | OutfitWhereUniqueInput[]
+    connect?: OutfitWhereUniqueInput | OutfitWhereUniqueInput[]
+    update?: OutfitUpdateWithWhereUniqueWithoutUserInput | OutfitUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: OutfitUpdateManyWithWhereWithoutUserInput | OutfitUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: OutfitScalarWhereInput | OutfitScalarWhereInput[]
+  }
+
   export type ClothUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<ClothCreateWithoutUserInput, ClothUncheckedCreateWithoutUserInput> | ClothCreateWithoutUserInput[] | ClothUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ClothCreateOrConnectWithoutUserInput | ClothCreateOrConnectWithoutUserInput[]
@@ -3782,10 +6618,38 @@ export namespace Prisma {
     deleteMany?: ClothScalarWhereInput | ClothScalarWhereInput[]
   }
 
+  export type OutfitUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<OutfitCreateWithoutUserInput, OutfitUncheckedCreateWithoutUserInput> | OutfitCreateWithoutUserInput[] | OutfitUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: OutfitCreateOrConnectWithoutUserInput | OutfitCreateOrConnectWithoutUserInput[]
+    upsert?: OutfitUpsertWithWhereUniqueWithoutUserInput | OutfitUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: OutfitCreateManyUserInputEnvelope
+    set?: OutfitWhereUniqueInput | OutfitWhereUniqueInput[]
+    disconnect?: OutfitWhereUniqueInput | OutfitWhereUniqueInput[]
+    delete?: OutfitWhereUniqueInput | OutfitWhereUniqueInput[]
+    connect?: OutfitWhereUniqueInput | OutfitWhereUniqueInput[]
+    update?: OutfitUpdateWithWhereUniqueWithoutUserInput | OutfitUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: OutfitUpdateManyWithWhereWithoutUserInput | OutfitUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: OutfitScalarWhereInput | OutfitScalarWhereInput[]
+  }
+
   export type UserCreateNestedOneWithoutClothesInput = {
     create?: XOR<UserCreateWithoutClothesInput, UserUncheckedCreateWithoutClothesInput>
     connectOrCreate?: UserCreateOrConnectWithoutClothesInput
     connect?: UserWhereUniqueInput
+  }
+
+  export type OutfitClothCreateNestedManyWithoutClothInput = {
+    create?: XOR<OutfitClothCreateWithoutClothInput, OutfitClothUncheckedCreateWithoutClothInput> | OutfitClothCreateWithoutClothInput[] | OutfitClothUncheckedCreateWithoutClothInput[]
+    connectOrCreate?: OutfitClothCreateOrConnectWithoutClothInput | OutfitClothCreateOrConnectWithoutClothInput[]
+    createMany?: OutfitClothCreateManyClothInputEnvelope
+    connect?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
+  }
+
+  export type OutfitClothUncheckedCreateNestedManyWithoutClothInput = {
+    create?: XOR<OutfitClothCreateWithoutClothInput, OutfitClothUncheckedCreateWithoutClothInput> | OutfitClothCreateWithoutClothInput[] | OutfitClothUncheckedCreateWithoutClothInput[]
+    connectOrCreate?: OutfitClothCreateOrConnectWithoutClothInput | OutfitClothCreateOrConnectWithoutClothInput[]
+    createMany?: OutfitClothCreateManyClothInputEnvelope
+    connect?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
   }
 
   export type UserUpdateOneRequiredWithoutClothesNestedInput = {
@@ -3794,6 +6658,118 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutClothesInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutClothesInput, UserUpdateWithoutClothesInput>, UserUncheckedUpdateWithoutClothesInput>
+  }
+
+  export type OutfitClothUpdateManyWithoutClothNestedInput = {
+    create?: XOR<OutfitClothCreateWithoutClothInput, OutfitClothUncheckedCreateWithoutClothInput> | OutfitClothCreateWithoutClothInput[] | OutfitClothUncheckedCreateWithoutClothInput[]
+    connectOrCreate?: OutfitClothCreateOrConnectWithoutClothInput | OutfitClothCreateOrConnectWithoutClothInput[]
+    upsert?: OutfitClothUpsertWithWhereUniqueWithoutClothInput | OutfitClothUpsertWithWhereUniqueWithoutClothInput[]
+    createMany?: OutfitClothCreateManyClothInputEnvelope
+    set?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
+    disconnect?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
+    delete?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
+    connect?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
+    update?: OutfitClothUpdateWithWhereUniqueWithoutClothInput | OutfitClothUpdateWithWhereUniqueWithoutClothInput[]
+    updateMany?: OutfitClothUpdateManyWithWhereWithoutClothInput | OutfitClothUpdateManyWithWhereWithoutClothInput[]
+    deleteMany?: OutfitClothScalarWhereInput | OutfitClothScalarWhereInput[]
+  }
+
+  export type OutfitClothUncheckedUpdateManyWithoutClothNestedInput = {
+    create?: XOR<OutfitClothCreateWithoutClothInput, OutfitClothUncheckedCreateWithoutClothInput> | OutfitClothCreateWithoutClothInput[] | OutfitClothUncheckedCreateWithoutClothInput[]
+    connectOrCreate?: OutfitClothCreateOrConnectWithoutClothInput | OutfitClothCreateOrConnectWithoutClothInput[]
+    upsert?: OutfitClothUpsertWithWhereUniqueWithoutClothInput | OutfitClothUpsertWithWhereUniqueWithoutClothInput[]
+    createMany?: OutfitClothCreateManyClothInputEnvelope
+    set?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
+    disconnect?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
+    delete?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
+    connect?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
+    update?: OutfitClothUpdateWithWhereUniqueWithoutClothInput | OutfitClothUpdateWithWhereUniqueWithoutClothInput[]
+    updateMany?: OutfitClothUpdateManyWithWhereWithoutClothInput | OutfitClothUpdateManyWithWhereWithoutClothInput[]
+    deleteMany?: OutfitClothScalarWhereInput | OutfitClothScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutOutfitsInput = {
+    create?: XOR<UserCreateWithoutOutfitsInput, UserUncheckedCreateWithoutOutfitsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutOutfitsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type OutfitClothCreateNestedManyWithoutOutfitInput = {
+    create?: XOR<OutfitClothCreateWithoutOutfitInput, OutfitClothUncheckedCreateWithoutOutfitInput> | OutfitClothCreateWithoutOutfitInput[] | OutfitClothUncheckedCreateWithoutOutfitInput[]
+    connectOrCreate?: OutfitClothCreateOrConnectWithoutOutfitInput | OutfitClothCreateOrConnectWithoutOutfitInput[]
+    createMany?: OutfitClothCreateManyOutfitInputEnvelope
+    connect?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
+  }
+
+  export type OutfitClothUncheckedCreateNestedManyWithoutOutfitInput = {
+    create?: XOR<OutfitClothCreateWithoutOutfitInput, OutfitClothUncheckedCreateWithoutOutfitInput> | OutfitClothCreateWithoutOutfitInput[] | OutfitClothUncheckedCreateWithoutOutfitInput[]
+    connectOrCreate?: OutfitClothCreateOrConnectWithoutOutfitInput | OutfitClothCreateOrConnectWithoutOutfitInput[]
+    createMany?: OutfitClothCreateManyOutfitInputEnvelope
+    connect?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutOutfitsNestedInput = {
+    create?: XOR<UserCreateWithoutOutfitsInput, UserUncheckedCreateWithoutOutfitsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutOutfitsInput
+    upsert?: UserUpsertWithoutOutfitsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutOutfitsInput, UserUpdateWithoutOutfitsInput>, UserUncheckedUpdateWithoutOutfitsInput>
+  }
+
+  export type OutfitClothUpdateManyWithoutOutfitNestedInput = {
+    create?: XOR<OutfitClothCreateWithoutOutfitInput, OutfitClothUncheckedCreateWithoutOutfitInput> | OutfitClothCreateWithoutOutfitInput[] | OutfitClothUncheckedCreateWithoutOutfitInput[]
+    connectOrCreate?: OutfitClothCreateOrConnectWithoutOutfitInput | OutfitClothCreateOrConnectWithoutOutfitInput[]
+    upsert?: OutfitClothUpsertWithWhereUniqueWithoutOutfitInput | OutfitClothUpsertWithWhereUniqueWithoutOutfitInput[]
+    createMany?: OutfitClothCreateManyOutfitInputEnvelope
+    set?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
+    disconnect?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
+    delete?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
+    connect?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
+    update?: OutfitClothUpdateWithWhereUniqueWithoutOutfitInput | OutfitClothUpdateWithWhereUniqueWithoutOutfitInput[]
+    updateMany?: OutfitClothUpdateManyWithWhereWithoutOutfitInput | OutfitClothUpdateManyWithWhereWithoutOutfitInput[]
+    deleteMany?: OutfitClothScalarWhereInput | OutfitClothScalarWhereInput[]
+  }
+
+  export type OutfitClothUncheckedUpdateManyWithoutOutfitNestedInput = {
+    create?: XOR<OutfitClothCreateWithoutOutfitInput, OutfitClothUncheckedCreateWithoutOutfitInput> | OutfitClothCreateWithoutOutfitInput[] | OutfitClothUncheckedCreateWithoutOutfitInput[]
+    connectOrCreate?: OutfitClothCreateOrConnectWithoutOutfitInput | OutfitClothCreateOrConnectWithoutOutfitInput[]
+    upsert?: OutfitClothUpsertWithWhereUniqueWithoutOutfitInput | OutfitClothUpsertWithWhereUniqueWithoutOutfitInput[]
+    createMany?: OutfitClothCreateManyOutfitInputEnvelope
+    set?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
+    disconnect?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
+    delete?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
+    connect?: OutfitClothWhereUniqueInput | OutfitClothWhereUniqueInput[]
+    update?: OutfitClothUpdateWithWhereUniqueWithoutOutfitInput | OutfitClothUpdateWithWhereUniqueWithoutOutfitInput[]
+    updateMany?: OutfitClothUpdateManyWithWhereWithoutOutfitInput | OutfitClothUpdateManyWithWhereWithoutOutfitInput[]
+    deleteMany?: OutfitClothScalarWhereInput | OutfitClothScalarWhereInput[]
+  }
+
+  export type OutfitCreateNestedOneWithoutClothesInput = {
+    create?: XOR<OutfitCreateWithoutClothesInput, OutfitUncheckedCreateWithoutClothesInput>
+    connectOrCreate?: OutfitCreateOrConnectWithoutClothesInput
+    connect?: OutfitWhereUniqueInput
+  }
+
+  export type ClothCreateNestedOneWithoutOutfitsInput = {
+    create?: XOR<ClothCreateWithoutOutfitsInput, ClothUncheckedCreateWithoutOutfitsInput>
+    connectOrCreate?: ClothCreateOrConnectWithoutOutfitsInput
+    connect?: ClothWhereUniqueInput
+  }
+
+  export type OutfitUpdateOneRequiredWithoutClothesNestedInput = {
+    create?: XOR<OutfitCreateWithoutClothesInput, OutfitUncheckedCreateWithoutClothesInput>
+    connectOrCreate?: OutfitCreateOrConnectWithoutClothesInput
+    upsert?: OutfitUpsertWithoutClothesInput
+    connect?: OutfitWhereUniqueInput
+    update?: XOR<XOR<OutfitUpdateToOneWithWhereWithoutClothesInput, OutfitUpdateWithoutClothesInput>, OutfitUncheckedUpdateWithoutClothesInput>
+  }
+
+  export type ClothUpdateOneRequiredWithoutOutfitsNestedInput = {
+    create?: XOR<ClothCreateWithoutOutfitsInput, ClothUncheckedCreateWithoutOutfitsInput>
+    connectOrCreate?: ClothCreateOrConnectWithoutOutfitsInput
+    upsert?: ClothUpsertWithoutOutfitsInput
+    connect?: ClothWhereUniqueInput
+    update?: XOR<XOR<ClothUpdateToOneWithWhereWithoutOutfitsInput, ClothUpdateWithoutOutfitsInput>, ClothUncheckedUpdateWithoutOutfitsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -3913,6 +6889,7 @@ export namespace Prisma {
     imageUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    outfits?: OutfitClothCreateNestedManyWithoutClothInput
   }
 
   export type ClothUncheckedCreateWithoutUserInput = {
@@ -3923,6 +6900,7 @@ export namespace Prisma {
     imageUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    outfits?: OutfitClothUncheckedCreateNestedManyWithoutClothInput
   }
 
   export type ClothCreateOrConnectWithoutUserInput = {
@@ -3932,6 +6910,36 @@ export namespace Prisma {
 
   export type ClothCreateManyUserInputEnvelope = {
     data: ClothCreateManyUserInput | ClothCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type OutfitCreateWithoutUserInput = {
+    id?: string
+    name: string
+    description?: string | null
+    imageUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    clothes?: OutfitClothCreateNestedManyWithoutOutfitInput
+  }
+
+  export type OutfitUncheckedCreateWithoutUserInput = {
+    id?: string
+    name: string
+    description?: string | null
+    imageUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    clothes?: OutfitClothUncheckedCreateNestedManyWithoutOutfitInput
+  }
+
+  export type OutfitCreateOrConnectWithoutUserInput = {
+    where: OutfitWhereUniqueInput
+    create: XOR<OutfitCreateWithoutUserInput, OutfitUncheckedCreateWithoutUserInput>
+  }
+
+  export type OutfitCreateManyUserInputEnvelope = {
+    data: OutfitCreateManyUserInput | OutfitCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -3965,6 +6973,35 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Cloth"> | Date | string
   }
 
+  export type OutfitUpsertWithWhereUniqueWithoutUserInput = {
+    where: OutfitWhereUniqueInput
+    update: XOR<OutfitUpdateWithoutUserInput, OutfitUncheckedUpdateWithoutUserInput>
+    create: XOR<OutfitCreateWithoutUserInput, OutfitUncheckedCreateWithoutUserInput>
+  }
+
+  export type OutfitUpdateWithWhereUniqueWithoutUserInput = {
+    where: OutfitWhereUniqueInput
+    data: XOR<OutfitUpdateWithoutUserInput, OutfitUncheckedUpdateWithoutUserInput>
+  }
+
+  export type OutfitUpdateManyWithWhereWithoutUserInput = {
+    where: OutfitScalarWhereInput
+    data: XOR<OutfitUpdateManyMutationInput, OutfitUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type OutfitScalarWhereInput = {
+    AND?: OutfitScalarWhereInput | OutfitScalarWhereInput[]
+    OR?: OutfitScalarWhereInput[]
+    NOT?: OutfitScalarWhereInput | OutfitScalarWhereInput[]
+    id?: StringFilter<"Outfit"> | string
+    name?: StringFilter<"Outfit"> | string
+    userId?: StringFilter<"Outfit"> | string
+    description?: StringNullableFilter<"Outfit"> | string | null
+    imageUrl?: StringNullableFilter<"Outfit"> | string | null
+    createdAt?: DateTimeFilter<"Outfit"> | Date | string
+    updatedAt?: DateTimeFilter<"Outfit"> | Date | string
+  }
+
   export type UserCreateWithoutClothesInput = {
     id?: string
     email: string
@@ -3972,6 +7009,7 @@ export namespace Prisma {
     name?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    outfits?: OutfitCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutClothesInput = {
@@ -3981,11 +7019,32 @@ export namespace Prisma {
     name?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    outfits?: OutfitUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutClothesInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutClothesInput, UserUncheckedCreateWithoutClothesInput>
+  }
+
+  export type OutfitClothCreateWithoutClothInput = {
+    id?: string
+    outfit: OutfitCreateNestedOneWithoutClothesInput
+  }
+
+  export type OutfitClothUncheckedCreateWithoutClothInput = {
+    id?: string
+    outfitId: string
+  }
+
+  export type OutfitClothCreateOrConnectWithoutClothInput = {
+    where: OutfitClothWhereUniqueInput
+    create: XOR<OutfitClothCreateWithoutClothInput, OutfitClothUncheckedCreateWithoutClothInput>
+  }
+
+  export type OutfitClothCreateManyClothInputEnvelope = {
+    data: OutfitClothCreateManyClothInput | OutfitClothCreateManyClothInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserUpsertWithoutClothesInput = {
@@ -4006,6 +7065,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    outfits?: OutfitUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutClothesInput = {
@@ -4013,6 +7073,240 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    outfits?: OutfitUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type OutfitClothUpsertWithWhereUniqueWithoutClothInput = {
+    where: OutfitClothWhereUniqueInput
+    update: XOR<OutfitClothUpdateWithoutClothInput, OutfitClothUncheckedUpdateWithoutClothInput>
+    create: XOR<OutfitClothCreateWithoutClothInput, OutfitClothUncheckedCreateWithoutClothInput>
+  }
+
+  export type OutfitClothUpdateWithWhereUniqueWithoutClothInput = {
+    where: OutfitClothWhereUniqueInput
+    data: XOR<OutfitClothUpdateWithoutClothInput, OutfitClothUncheckedUpdateWithoutClothInput>
+  }
+
+  export type OutfitClothUpdateManyWithWhereWithoutClothInput = {
+    where: OutfitClothScalarWhereInput
+    data: XOR<OutfitClothUpdateManyMutationInput, OutfitClothUncheckedUpdateManyWithoutClothInput>
+  }
+
+  export type OutfitClothScalarWhereInput = {
+    AND?: OutfitClothScalarWhereInput | OutfitClothScalarWhereInput[]
+    OR?: OutfitClothScalarWhereInput[]
+    NOT?: OutfitClothScalarWhereInput | OutfitClothScalarWhereInput[]
+    id?: StringFilter<"OutfitCloth"> | string
+    outfitId?: StringFilter<"OutfitCloth"> | string
+    clothId?: StringFilter<"OutfitCloth"> | string
+  }
+
+  export type UserCreateWithoutOutfitsInput = {
+    id?: string
+    email: string
+    password: string
+    name?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    clothes?: ClothCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutOutfitsInput = {
+    id?: string
+    email: string
+    password: string
+    name?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    clothes?: ClothUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutOutfitsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutOutfitsInput, UserUncheckedCreateWithoutOutfitsInput>
+  }
+
+  export type OutfitClothCreateWithoutOutfitInput = {
+    id?: string
+    cloth: ClothCreateNestedOneWithoutOutfitsInput
+  }
+
+  export type OutfitClothUncheckedCreateWithoutOutfitInput = {
+    id?: string
+    clothId: string
+  }
+
+  export type OutfitClothCreateOrConnectWithoutOutfitInput = {
+    where: OutfitClothWhereUniqueInput
+    create: XOR<OutfitClothCreateWithoutOutfitInput, OutfitClothUncheckedCreateWithoutOutfitInput>
+  }
+
+  export type OutfitClothCreateManyOutfitInputEnvelope = {
+    data: OutfitClothCreateManyOutfitInput | OutfitClothCreateManyOutfitInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutOutfitsInput = {
+    update: XOR<UserUpdateWithoutOutfitsInput, UserUncheckedUpdateWithoutOutfitsInput>
+    create: XOR<UserCreateWithoutOutfitsInput, UserUncheckedCreateWithoutOutfitsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutOutfitsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutOutfitsInput, UserUncheckedUpdateWithoutOutfitsInput>
+  }
+
+  export type UserUpdateWithoutOutfitsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    clothes?: ClothUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutOutfitsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    clothes?: ClothUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type OutfitClothUpsertWithWhereUniqueWithoutOutfitInput = {
+    where: OutfitClothWhereUniqueInput
+    update: XOR<OutfitClothUpdateWithoutOutfitInput, OutfitClothUncheckedUpdateWithoutOutfitInput>
+    create: XOR<OutfitClothCreateWithoutOutfitInput, OutfitClothUncheckedCreateWithoutOutfitInput>
+  }
+
+  export type OutfitClothUpdateWithWhereUniqueWithoutOutfitInput = {
+    where: OutfitClothWhereUniqueInput
+    data: XOR<OutfitClothUpdateWithoutOutfitInput, OutfitClothUncheckedUpdateWithoutOutfitInput>
+  }
+
+  export type OutfitClothUpdateManyWithWhereWithoutOutfitInput = {
+    where: OutfitClothScalarWhereInput
+    data: XOR<OutfitClothUpdateManyMutationInput, OutfitClothUncheckedUpdateManyWithoutOutfitInput>
+  }
+
+  export type OutfitCreateWithoutClothesInput = {
+    id?: string
+    name: string
+    description?: string | null
+    imageUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutOutfitsInput
+  }
+
+  export type OutfitUncheckedCreateWithoutClothesInput = {
+    id?: string
+    name: string
+    userId: string
+    description?: string | null
+    imageUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type OutfitCreateOrConnectWithoutClothesInput = {
+    where: OutfitWhereUniqueInput
+    create: XOR<OutfitCreateWithoutClothesInput, OutfitUncheckedCreateWithoutClothesInput>
+  }
+
+  export type ClothCreateWithoutOutfitsInput = {
+    id?: string
+    name: string
+    type: string
+    color?: string | null
+    imageUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutClothesInput
+  }
+
+  export type ClothUncheckedCreateWithoutOutfitsInput = {
+    id?: string
+    name: string
+    type: string
+    color?: string | null
+    imageUrl?: string | null
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ClothCreateOrConnectWithoutOutfitsInput = {
+    where: ClothWhereUniqueInput
+    create: XOR<ClothCreateWithoutOutfitsInput, ClothUncheckedCreateWithoutOutfitsInput>
+  }
+
+  export type OutfitUpsertWithoutClothesInput = {
+    update: XOR<OutfitUpdateWithoutClothesInput, OutfitUncheckedUpdateWithoutClothesInput>
+    create: XOR<OutfitCreateWithoutClothesInput, OutfitUncheckedCreateWithoutClothesInput>
+    where?: OutfitWhereInput
+  }
+
+  export type OutfitUpdateToOneWithWhereWithoutClothesInput = {
+    where?: OutfitWhereInput
+    data: XOR<OutfitUpdateWithoutClothesInput, OutfitUncheckedUpdateWithoutClothesInput>
+  }
+
+  export type OutfitUpdateWithoutClothesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutOutfitsNestedInput
+  }
+
+  export type OutfitUncheckedUpdateWithoutClothesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ClothUpsertWithoutOutfitsInput = {
+    update: XOR<ClothUpdateWithoutOutfitsInput, ClothUncheckedUpdateWithoutOutfitsInput>
+    create: XOR<ClothCreateWithoutOutfitsInput, ClothUncheckedCreateWithoutOutfitsInput>
+    where?: ClothWhereInput
+  }
+
+  export type ClothUpdateToOneWithWhereWithoutOutfitsInput = {
+    where?: ClothWhereInput
+    data: XOR<ClothUpdateWithoutOutfitsInput, ClothUncheckedUpdateWithoutOutfitsInput>
+  }
+
+  export type ClothUpdateWithoutOutfitsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutClothesNestedInput
+  }
+
+  export type ClothUncheckedUpdateWithoutOutfitsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    color?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4027,6 +7321,15 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type OutfitCreateManyUserInput = {
+    id?: string
+    name: string
+    description?: string | null
+    imageUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type ClothUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -4035,6 +7338,7 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    outfits?: OutfitClothUpdateManyWithoutClothNestedInput
   }
 
   export type ClothUncheckedUpdateWithoutUserInput = {
@@ -4045,6 +7349,7 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    outfits?: OutfitClothUncheckedUpdateManyWithoutClothNestedInput
   }
 
   export type ClothUncheckedUpdateManyWithoutUserInput = {
@@ -4055,6 +7360,75 @@ export namespace Prisma {
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OutfitUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    clothes?: OutfitClothUpdateManyWithoutOutfitNestedInput
+  }
+
+  export type OutfitUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    clothes?: OutfitClothUncheckedUpdateManyWithoutOutfitNestedInput
+  }
+
+  export type OutfitUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OutfitClothCreateManyClothInput = {
+    id?: string
+    outfitId: string
+  }
+
+  export type OutfitClothUpdateWithoutClothInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    outfit?: OutfitUpdateOneRequiredWithoutClothesNestedInput
+  }
+
+  export type OutfitClothUncheckedUpdateWithoutClothInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    outfitId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type OutfitClothUncheckedUpdateManyWithoutClothInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    outfitId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type OutfitClothCreateManyOutfitInput = {
+    id?: string
+    clothId: string
+  }
+
+  export type OutfitClothUpdateWithoutOutfitInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cloth?: ClothUpdateOneRequiredWithoutOutfitsNestedInput
+  }
+
+  export type OutfitClothUncheckedUpdateWithoutOutfitInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clothId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type OutfitClothUncheckedUpdateManyWithoutOutfitInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clothId?: StringFieldUpdateOperationsInput | string
   }
 
 

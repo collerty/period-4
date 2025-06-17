@@ -1,4 +1,15 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  HttpCode,
+  HttpStatus,
+  Query,
+} from '@nestjs/common';
 import { ClothesService } from './clothes.service';
 import { CreateClotheDto } from './dto/create-clothe.dto';
 import { UpdateClotheDto } from './dto/update-clothe.dto';
@@ -8,27 +19,42 @@ export class ClothesController {
   constructor(private readonly clothesService: ClothesService) {}
 
   @Post()
+  @HttpCode(HttpStatus.CREATED)
   create(@Body() createClotheDto: CreateClotheDto) {
     return this.clothesService.create(createClotheDto);
   }
 
   @Get()
-  findAll() {
-    return this.clothesService.findAll();
+  @HttpCode(HttpStatus.OK)
+  findAll(@Query('userId') userId: string) {
+    return this.clothesService.findAll(userId);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.clothesService.findOne(+id);
+  @HttpCode(HttpStatus.OK)
+  findOne(
+    @Param('id') id: string,
+    @Query('userId') userId: string,
+  ) {
+    return this.clothesService.findOne(id, userId);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateClotheDto: UpdateClotheDto) {
-    return this.clothesService.update(+id, updateClotheDto);
+  @HttpCode(HttpStatus.OK)
+  update(
+    @Param('id') id: string,
+    @Body() updateClotheDto: UpdateClotheDto,
+    @Query('userId') userId: string,
+  ) {
+    return this.clothesService.update(id, updateClotheDto, userId);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.clothesService.remove(+id);
+  @HttpCode(HttpStatus.OK)
+  remove(
+    @Param('id') id: string,
+    @Query('userId') userId: string,
+  ) {
+    return this.clothesService.remove(id, userId);
   }
 }
