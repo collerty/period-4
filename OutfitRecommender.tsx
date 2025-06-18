@@ -1,8 +1,7 @@
-// App.tsx
 import React, { useState } from 'react';
-import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Button } from 'react-native';
 
-// Expanded mock data with more items and labels
+// Your full mockWardrobe and STYLE_CATEGORIES (same as you pasted)
 const mockWardrobe = {
   tops: [
     { id: 1, name: 'White Crewneck T-shirt', labels: ['casual', 'summer', 'cotton', 'short-sleeve', 'basic', 'minimalist'] },
@@ -44,7 +43,6 @@ const mockWardrobe = {
   ]
 };
 
-// Style categories with their associated labels
 const STYLE_CATEGORIES = {
   all: { name: 'All Styles', labels: [] },
   casual: { name: 'Casual', labels: ['casual', 'everyday', 'comfort'] },
@@ -56,40 +54,33 @@ const STYLE_CATEGORIES = {
   athletic: { name: 'Athletic', labels: ['athletic', 'sporty', 'performance', 'comfort'] },
 };
 
-// Enhanced recommendation logic
 const generateOutfits = (wardrobe: typeof mockWardrobe, styleKey: keyof typeof STYLE_CATEGORIES) => {
   const outfits = [];
   const styleLabels = STYLE_CATEGORIES[styleKey].labels;
-  
-  // Generate all possible combinations
+
   for (const top of wardrobe.tops) {
     for (const bottom of wardrobe.bottoms) {
       for (const shoes of wardrobe.shoes) {
-        // Optionally add outerwear (50% chance to include)
         const includeOuterwear = Math.random() > 0.5;
         const outerwearOptions = includeOuterwear ? wardrobe.outerwear : [null];
-        
+
         for (const outerwear of outerwearOptions) {
-          // Find all labels across the outfit items
           const allLabels = [
             ...top.labels,
             ...bottom.labels,
             ...shoes.labels,
-            ...(outerwear?.labels || [])
+            ...(outerwear?.labels || []),
           ];
-          
-          // Count how many style labels are matched
-          const styleMatchCount = styleKey === 'all' 
-            ? 1 
-            : styleLabels.filter(label => allLabels.includes(label)).length;
-          
-          // Only add outfit if it matches at least one style label (or if no style filter)
+
+          const styleMatchCount = styleKey === 'all'
+              ? 1
+              : styleLabels.filter(label => allLabels.includes(label)).length;
+
           if (styleKey === 'all' || styleMatchCount > 0) {
-            // Find accessories that match at least one label from the outfit
             const matchingAccessories = wardrobe.accessories
-              .filter(acc => acc.labels.some(label => allLabels.includes(label)))
-              .slice(0, 2); // Limit to 2 accessories
-            
+                .filter(acc => acc.labels.some(label => allLabels.includes(label)))
+                .slice(0, 2);
+
             outfits.push({
               top,
               bottom,
@@ -97,23 +88,22 @@ const generateOutfits = (wardrobe: typeof mockWardrobe, styleKey: keyof typeof S
               outerwear,
               accessories: matchingAccessories,
               styleMatchCount,
-              allLabels: [...new Set(allLabels)] // Unique labels
+              allLabels: [...new Set(allLabels)],
             });
           }
         }
       }
     }
   }
-  
-  // Sort by best style matches first
+
   if (styleKey !== 'all') {
     outfits.sort((a, b) => b.styleMatchCount - a.styleMatchCount);
   }
-  
+
   return outfits;
 };
 
-const App = () => {
+export default function TwoTabs() {
   const [outfits, setOutfits] = useState<any[]>([]);
   const [selectedStyle, setSelectedStyle] = useState<keyof typeof STYLE_CATEGORIES>('all');
 
@@ -123,66 +113,65 @@ const App = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Fashion Outfit Recommender</Text>
-      
-      <View style={styles.controls}>
-        <Text style={styles.sectionTitle}>Style Preferences</Text>
-        <ScrollView 
-          horizontal 
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.styleButtons}
-        >
-          {Object.entries(STYLE_CATEGORIES).map(([key, { name }]) => (
-            <Button 
-              key={key}
-              title={name} 
-              onPress={() => setSelectedStyle(key as keyof typeof STYLE_CATEGORIES)} 
-              color={selectedStyle === key ? '#6200ee' : '#aaa'}
-            />
+      <View style={styles.container}>
+        <Text style={styles.title}>Fashion Outfit Recommender</Text>
+
+        <View style={styles.controls}>
+          <Text style={styles.sectionTitle}>Style Preferences</Text>
+          <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.styleButtons}
+          >
+            {Object.entries(STYLE_CATEGORIES).map(([key, { name }]) => (
+                <Button
+                    key={key}
+                    title={name}
+                    onPress={() => setSelectedStyle(key as keyof typeof STYLE_CATEGORIES)}
+                    color={selectedStyle === key ? '#6200ee' : '#aaa'}
+                />
+            ))}
+          </ScrollView>
+
+          <Button title="Generate Outfits" onPress={handleGenerateOutfits} color="#6200ee" />
+        </View>
+
+        <ScrollView style={styles.outfitsContainer}>
+          <Text style={styles.sectionTitle}>
+            {outfits.length > 0
+                ? `Recommended ${STYLE_CATEGORIES[selectedStyle].name} Outfits (${outfits.length})`
+                : 'No outfits generated yet'}
+          </Text>
+
+          {outfits.slice(0, 10).map((outfit, index) => (
+              <View key={index} style={styles.outfitCard}>
+                <Text style={styles.outfitTitle}>Outfit #{index + 1}</Text>
+                <Text style={styles.outfitItem}>Top: {outfit.top.name}</Text>
+                <Text style={styles.outfitItem}>Bottom: {outfit.bottom.name}</Text>
+                <Text style={styles.outfitItem}>Shoes: {outfit.shoes.name}</Text>
+                {outfit.outerwear && (
+                    <Text style={styles.outfitItem}>Outerwear: {outfit.outerwear.name}</Text>
+                )}
+                {outfit.accessories.length > 0 && (
+                    <Text style={styles.outfitItem}>
+                      Accessories: {outfit.accessories.map((a: any) => a.name).join(', ')}
+                    </Text>
+                )}
+                <Text style={styles.labelsText}>
+                  Style: {STYLE_CATEGORIES[selectedStyle].name} •
+                  Matching Labels:{' '}
+                  {outfit.allLabels
+                      .filter((l: string) =>
+                          selectedStyle === 'all' || STYLE_CATEGORIES[selectedStyle].labels.includes(l)
+                      )
+                      .join(', ')}
+                </Text>
+              </View>
           ))}
         </ScrollView>
-        
-        <Button 
-          title="Generate Outfits" 
-          onPress={handleGenerateOutfits} 
-          color="#6200ee"
-        />
       </View>
-      
-      <ScrollView style={styles.outfitsContainer}>
-        <Text style={styles.sectionTitle}>
-          {outfits.length > 0 
-            ? `Recommended ${STYLE_CATEGORIES[selectedStyle].name} Outfits (${outfits.length})`
-            : 'No outfits generated yet'}
-        </Text>
-        
-        {outfits.slice(0, 10).map((outfit, index) => (
-          <View key={index} style={styles.outfitCard}>
-            <Text style={styles.outfitTitle}>Outfit #{index + 1}</Text>
-            <Text style={styles.outfitItem}>Top: {outfit.top.name}</Text>
-            <Text style={styles.outfitItem}>Bottom: {outfit.bottom.name}</Text>
-            <Text style={styles.outfitItem}>Shoes: {outfit.shoes.name}</Text>
-            {outfit.outerwear && (
-              <Text style={styles.outfitItem}>Outerwear: {outfit.outerwear.name}</Text>
-            )}
-            {outfit.accessories.length > 0 && (
-              <Text style={styles.outfitItem}>
-                Accessories: {outfit.accessories.map((a: { name: string }) => a.name).join(', ')}
-              </Text>
-            )}
-            <Text style={styles.labelsText}>
-              Style: {STYLE_CATEGORIES[selectedStyle].name} • 
-              Matching Labels: {outfit.allLabels.filter((l: string) => 
-                selectedStyle === 'all' || STYLE_CATEGORIES[selectedStyle].labels.includes(l)
-              ).join(', ')}
-            </Text>
-          </View>
-        ))}
-      </ScrollView>
-    </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -241,5 +230,3 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
 });
-
-export default App;
