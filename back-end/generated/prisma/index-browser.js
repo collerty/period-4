@@ -129,6 +129,14 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.RefreshTokenScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  userId: 'userId',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.ClothScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -174,6 +182,7 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   User: 'User',
+  RefreshToken: 'RefreshToken',
   Cloth: 'Cloth',
   Outfit: 'Outfit',
   OutfitCloth: 'OutfitCloth'
