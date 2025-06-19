@@ -1,0 +1,50 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+back-end/node_modules/
+front-end/node_modules/
+
+# Build output
+back-end/dist/
+front-end/.next/
+front-end/out/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+
+# Environment files
+.env
+.env.*
+
+# Misc
+*.local
+*.sublime-workspace
+*.sublime-project
+
+# Prisma
+back-end/prisma/dev.db
+back-end/prisma/dev.db-journal
+
+# Expo
+front-end/.expo/
+.expo/
+.expo-shared/
+
+# Coverage
+coverage/
+
+# Others
+*.tgz 
