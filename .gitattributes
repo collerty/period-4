@@ -1,0 +1,42 @@
+# =============================
+# Enforce consistent line endings
+# =============================
+
+# Auto-detect text files and normalize to LF in the repo
+* text=auto
+
+# Explicitly enforce LF for these file types
+*.js    text eol=lf
+*.ts    text eol=lf
+*.tsx   text eol=lf
+*.html  text eol=lf
+*.css   text eol=lf
+*.json  text eol=lf
+*.md    text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+
+# =============================
+# Treat binary files as binary (no line ending conversion)
+# =============================
+
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.svg   binary
+*.ico   binary
+*.pdf   binary
+*.zip   binary
+
+# =============================
+# Optional: Keep Shell & Bash scripts LF
+# =============================
+
+*.sh    text eol=lf
+
+# =============================
+# Optional: Keep Windows batch files CRLF
+# =============================
+
+*.bat   text eol=crlf

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lenso.ai - Visual Fashion Search</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #71D440 0%, #4A9F2A 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #71D440 0%, #4A9F2A 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .upload-section {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .upload-area {
+            border: 3px dashed #71D440;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            background: linear-gradient(45deg, #f8fffa, #fff);
+            cursor: pointer;
+        }
+
+        .upload-area:hover {
+            border-color: #4A9F2A;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(113, 212, 64, 0.15);
+        }
+
+        .upload-area.dragover {
+            border-color: #4A9F2A;
+            background: linear-gradient(45deg, #f0fff5, #f8fffa);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: #71D440;
+            margin-bottom: 20px;
+        }
+
+        .upload-text {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .upload-subtext {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .upload-btn {
+            background: linear-gradient(135deg, #71D440 0%, #4A9F2A 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(113, 212, 64, 0.3);
+        }
+
+        .uploaded-image {
+            max-width: 300px;
+            max-height: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            margin: 20px auto;
+            display: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #71D440;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .results-section {
+            display: none;
+            padding: 40px;
+            background: #f8fffa;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .results-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .results-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .result-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .result-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .result-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .result-info {
+            padding: 20px;
+        }
+
+        .result-brand {
+            font-weight: bold;
+            color: #71D440;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .result-name {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .result-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #4A9F2A;
+            margin-bottom: 10px;
+        }
+
+        .result-similarity {
+            display: inline-block;
+            background: linear-gradient(135deg, #71D440 0%, #4A9F2A 100%);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .new-search-btn {
+            display: none;
+            background: linear-gradient(135deg, #71D440 0%, #4A9F2A 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 30px auto;
+            transition: all 0.3s ease;
+        }
+
+        .new-search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(113, 212, 64, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .upload-section {
+                padding: 20px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">lenso.ai</div>
+            <div class="tagline">Discover fashion through visual search</div>
+        </div>
+
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📸</div>
+                <div class="upload-text">Drop your fashion image here</div>
+                <div class="upload-subtext">or click to browse your files</div>
+                <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                    Choose Image
+                </button>
+            </div>
+            <input type="file" id="fileInput" accept="image/*">
+            <img class="uploaded-image" id="uploadedImage" alt="Uploaded image">
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <div>Analyzing your image...</div>
+            <div style="font-size: 0.9rem; color: #666; margin-top: 10px;">
+                Finding similar items across the web
+            </div>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="results-header">
+                <div class="results-title">Similar Items Found</div>
+                <div class="results-subtitle">Here are the best matches for your style</div>
+            </div>
+
+            <div class="results-grid">
+                <div class="result-item">
+                    <img src="https://us.killstar.com/cdn/shop/files/Hunter_sMoonSweater_Black_1.jpg?v=1748865623" alt="Hunter's Moon Sweater" class="result-image">
+                    <div class="result-info">
+                        <div class="result-brand">KILLSTAR</div>
+                        <div class="result-name">Hunter's Moon Sweater</div>
+                        <div class="result-price">€53.00</div>
+                    </div>
+                </div>
+
+                <div class="result-item">
+                    <img src="https://www.large.nl/dw/image/v2/BBQV_PRD/on/demandware.static/-/Sites-master-emp/default/dw24dead90/images/5/6/2/4/562481a.jpg?sfrm=png" alt="Big Checker Cardigan" class="result-image">
+                    <div class="result-info">
+                        <div class="result-brand">JAWBREAKER</div>
+                        <div class="result-name">Big Checker Cardigan</div>
+                        <div class="result-price">€47.99</div>
+                    </div>
+                </div>
+
+                <div class="result-item">
+                    <img src="https://www.disturbia.nl/cdn/shop/files/AW23B146_ANDROID_LOOSE_KNIT_JUMPER_001_700x.jpg?v=1699268008" alt="Android Loose Knit Jumper" class="result-image">
+                    <div class="result-info">
+                        <div class="result-brand">DISTURBIA</div>
+                        <div class="result-name">Android Loose Knit Jumper</div>
+                        <div class="result-price">€58.95</div>
+                    </div>
+                </div>
+
+                <div class="result-item">
+                    <img src="https://theraggedpriest.com/cdn/shop/files/blackandwhiteknit_2359.jpg?v=1737120192&width=5000" alt="Dexter Stripe Knit" class="result-image">
+                    <div class="result-info">
+                        <div class="result-brand">THE RAGGED PRIEST</div>
+                        <div class="result-name">Dexter Stripe Knit</div>
+                        <div class="result-price">€41.95</div>
+                    </div>
+                </div>
+
+                <div class="result-item">
+                    <img src="https://bannedalt.eu/cdn/shop/files/JP57270_WhiteNavy_1_1500x.jpg?v=1741695478" alt="Astrid Knitted Jumper" class="result-image">
+                    <div class="result-info">
+                        <div class="result-brand">BANNED ALTERNATIVE</div>
+                        <div class="result-name">Astrid Knitted Jumper</div>
+                        <div class="result-price">€36.00</div>
+                    </div>
+                </div>
+
+                <div class="result-item">
+                    <img src="https://www.hellbunny.com/cdn/shop/files/hlb60109-nevermind-cardigan-blk-wht-01_2.jpg?crop=center&height=2250&v=1688569256&width=1500" alt="Nevermind Cardigan" class="result-image">
+                    <div class="result-info">
+                        <div class="result-brand">HELLBUNNY</div>
+                        <div class="result-name">Nevermind Cardigan</div>
+                        <div class="result-price">€75.95</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="new-search-btn" id="newSearchBtn">Search Another Image</button>
+        </div>
+    </div>
+
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const uploadedImage = document.getElementById('uploadedImage');
+        const uploadSection = document.getElementById('uploadSection');
+        const loading = document.getElementById('loading');
+        const resultsSection = document.getElementById('resultsSection');
+        const newSearchBtn = document.getElementById('newSearchBtn');
+
+        // Handle drag and drop
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+
+        // Handle click to upload
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+
+        function handleFile(file) {
+            if (!file.type.startsWith('image/')) {
+                alert('Please select an image file');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                uploadedImage.src = e.target.result;
+                uploadedImage.style.display = 'block';
+                
+                // Start the "analysis" process
+                setTimeout(() => {
+                    uploadSection.style.display = 'none';
+                    loading.style.display = 'block';
+                    
+                    // Show results after loading
+                    setTimeout(() => {
+                        loading.style.display = 'none';
+                        resultsSection.style.display = 'block';
+                        newSearchBtn.style.display = 'block';
+                        
+                        // Smooth scroll to results
+                        resultsSection.scrollIntoView({ behavior: 'smooth' });
+                    }, 3000); // 3 second loading time
+                }, 500);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Reset for new search
+        newSearchBtn.addEventListener('click', () => {
+            uploadSection.style.display = 'block';
+            loading.style.display = 'none';
+            resultsSection.style.display = 'none';
+            newSearchBtn.style.display = 'none';
+            uploadedImage.style.display = 'none';
+            fileInput.value = '';
+            
+            // Scroll back to top
+            uploadSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Add click handlers to result items for demo
+        document.querySelectorAll('.result-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const brand = item.querySelector('.result-brand').textContent;
+                const name = item.querySelector('.result-name').textContent;
+                alert(`Opening ${brand} - ${name} in new tab (demo mode)`);
+            });
+        });
+    </script>
+</body>
+</html>
