@@ -61,7 +61,6 @@ export default function SignUp() {
               </Input>
             </VStack>
             <VStack>
-
               <Text className="text-typography-900 font-medium text-base mb-1 mt-3">Email</Text>
               <Input className="rounded-xl" variant="outline">
                 <InputField

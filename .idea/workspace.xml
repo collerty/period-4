@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eedc67ad-8fa8-415d-aabf-8f0e31e0c348" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/front-end/app/(app)/calendar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/app/(app)/profile.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/app/(app)/suggestions.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/app/(app)/wardrobe.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/assets/images/logo-md.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/assets/images/logo32x32.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/app/(app)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/app/(app)/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/lib/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/app/(app)/wardrobe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/app/(app)/wardrobe.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/app/(auth)/sign-up.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/app/(auth)/sign-up.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end2/app/explore.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end2/app/explore.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +48,7 @@
     "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\collert\\WebstormProjects\\period-4\\front-end\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\collert\\WebstormProjects\\period-4\\back-end\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -96,6 +92,7 @@
       <workItem from="1750309363275" duration="12549000" />
       <workItem from="1750323103357" duration="239000" />
       <workItem from="1750323364982" duration="5299000" />
+      <workItem from="1750334130151" duration="4301000" />
     </task>
     <servers />
   </component>
