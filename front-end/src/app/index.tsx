@@ -1,17 +1,18 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import { Button, ButtonText } from '@gluestack-ui/themed';
+import { Text, View } from 'react-native';
 
-export default function Home() {
+import { useSession } from '@/components/auth/ctx';
+
+export default function Index() {
+  const { signOut } = useSession();
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
-      <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 20 }}>
-        Welcome to Tailored!
-      </Text>
-      
-      <Button>
-        <ButtonText>Test Gluestack UI</ButtonText>
-      </Button>
-    </View>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text
+            onPress={() => {
+              // The `app/(app)/_layout.tsx` will redirect to the sign-in screen.
+              signOut();
+            }}>
+          Sign Out
+        </Text>
+      </View>
   );
 }
