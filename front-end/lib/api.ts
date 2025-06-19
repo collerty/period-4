@@ -1,5 +1,5 @@
+// const apiUrl = "http://period-4-production.up.railway.app"
 const apiUrl = "http://localhost:4000"
-
 
 export async function register({ username, email, password }: { username: string, email: string, password: string }) {
   const res = await fetch(`${apiUrl}/auth/register`, {
@@ -14,6 +14,8 @@ export async function register({ username, email, password }: { username: string
 }
 
 export async function login({ email, password }: { email: string, password: string }) {
+  console.log("login");
+  console.log(`fetch url: ${apiUrl}/auth/login`)
   const res = await fetch(`${apiUrl}/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
