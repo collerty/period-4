@@ -5,7 +5,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("postgresql://postgres:GeiwubfXsglQKysOOIKgbWwsYEUopOau@shuttle.proxy.rlwy.net:50396/railway")
+  url      = env("DATABASE_URL")
 }
 
 model User {
