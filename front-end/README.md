@@ -1,32 +1,50 @@
-# Expo Router and shadcn
+# Welcome to your Expo app 👋
 
-Use [Expo Router](https://docs.expo.dev/router/introduction/) with [Shadcn](https://ui.shadcn.com/) styling on web (Shadcn does not support native).
+This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-This template uses Postcss, autoprefixer, and tailwindcss to style the web version of the app. The project is configured to use a root `/src` directory for all source files.
+## Get started
 
-New shadcn components can be added [according to the docs](https://ui.shadcn.com/docs/components/accordion), i.e. by running the CLI: `npx shadcn@latest add accordion`
+1. Install dependencies
 
-## 🚀 How to use
+   ```bash
+   npm install
+   ```
 
-Start an Expo app with this template:
+2. Start the app
 
-```sh
-npx create-expo-app -e with-shadcn
+   ```bash
+   npx expo start
+   ```
+
+In the output, you'll find options to open the app in a
+
+- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
+- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
+- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+
+You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+
+## Get a fresh project
+
+When you're ready, run:
+
+```bash
+npm run reset-project
 ```
 
-Or run in the browser with Stackblitz:
+This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
-<a href="https://stackblitz.com/github/expo/examples/tree/master/with-shadcn">
-  <img alt="Open in Stackblitz" longdesc="Open in Stackblitz" src="https://img.shields.io/badge/Open%20in%20Stackblitz-000.svg?style=flat-square&logo=STACKBLITZ&labelColor=000000&logoColor=fff" />
-</a>
+## Learn more
 
-## Deploy
+To learn more about developing your project with Expo, look at the following resources:
 
-Deploy on all platforms with Expo Application Services (EAS).
+- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
+- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
 
-- Deploy the website: `npx eas-cli deploy` — [Learn more](https://docs.expo.dev/eas/hosting/get-started/)
-- Deploy on iOS and Android using: `npx eas-cli build` — [Learn more](https://expo.dev/eas)
+## Join the community
 
-<!-- <a href="https://expo.dev/eas">
-  <img alt="Deploy with EAS" longdesc="Deploy with EAS" src="https://img.shields.io/badge/Deploy%20with%20EAS-000.svg?style=for-the-badge&logo=EXPO&labelColor=000000&logoColor=fff" />
-</a> -->
+Join our community of developers creating universal apps.
+
+- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
+- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
