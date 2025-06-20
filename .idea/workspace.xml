@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="eedc67ad-8fa8-415d-aabf-8f0e31e0c348" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/app/(app)/suggestions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/app/(app)/suggestions.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,13 +49,6 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;suggestions&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/collert/WebstormProjects/period-4/front-end2/components/auth&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
@@ -112,7 +101,8 @@
       <workItem from="1750309363275" duration="12549000" />
       <workItem from="1750323103357" duration="239000" />
       <workItem from="1750323364982" duration="5299000" />
-      <workItem from="1750334130151" duration="4301000" />
+      <workItem from="1750334130151" duration="9809000" />
+      <workItem from="1750388491732" duration="546000" />
     </task>
     <servers />
   </component>
