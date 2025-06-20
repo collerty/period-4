@@ -7,6 +7,7 @@ import {Text} from "@/components/ui/text";
 import {AddIcon, Icon} from "@/components/ui/icon";
 import {HStack} from "@/components/ui/hstack";
 import clsx from "clsx";
+import {Link} from "@/components/ui/link";
 
 const categories = ['Jeans', 'Sweaters', 'Jackets', 'Dresses'];
 const items = [
@@ -71,8 +72,6 @@ export default function WardrobeScreen() {
         />
 
         {/* Floating Action Button */}
-        <Link>
-
           <TouchableOpacity
               className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-black w-14 h-14 rounded-full items-center justify-center z-50 shadow-lg"
               style={{transform: [{translateX: -28}]}}
@@ -82,7 +81,6 @@ export default function WardrobeScreen() {
           >
             <Icon as={AddIcon} color="white" size="xl"/>
           </TouchableOpacity>
-        </Link>
       </Box>
   );
 } 
