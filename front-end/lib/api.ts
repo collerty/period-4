@@ -1,4 +1,4 @@
-const apiUrl = "https://period-4-production.up.railway.app"
+export const apiUrl = "https://period-4-production.up.railway.app"
 // const apiUrl = "http://localhost:4000"
 
 export async function register({ username, email, password }: { username: string, email: string, password: string }) {

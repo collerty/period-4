@@ -4,23 +4,27 @@ import {Box} from "@/components/ui/box";
 import {HStack} from "@/components/ui/hstack";
 import {VStack} from "@/components/ui/vstack";
 import {Pressable} from "@/components/ui/pressable";
-import {Avatar} from "@/components/ui/avatar";
+import {Avatar, AvatarFallbackText} from "@/components/ui/avatar";
 import {Text} from "@/components/ui/text"
 import React from 'react';
 import {Button, ButtonText} from "@/components/ui/button";
 import {Badge} from "@/components/ui/badge";
 
-// const clothes = [
-//   require('../../assets/images/green-bag.png'),
-//   require('../../assets/images/red-top.png'),
-//   require('../../assets/images/navy-sweater.png'),
-//   require('../../assets/images/grey-jacket.png'),
-//   require('../../assets/images/sunglasses.png'),
-//   require('../../assets/images/white-tee.png'),
-//   require('../../assets/images/jeans.png'),
-//   require('../../assets/images/blue-shirt.png'),
-// ];
-const clothes = Array(8).fill({ uri: 'https://placehold.co/100x100?text=Item' });
+const clothes = [
+  require('../../assets/images/jeans/jeans-1.png'),
+  require('../../assets/images/jeans/jeans-2.png'),
+  require('../../assets/images/jeans/jeans-3.webp'),
+  require('../../assets/images/jeans/jeans-4.png'),
+  require('../../assets/images/sneakers/sneakers-1.webp'),
+  require('../../assets/images/sneakers/sneakers-2.webp'),
+  require('../../assets/images/sneakers/sneakers-3.webp'),
+  require('../../assets/images/sweaters/sweater-1.avif'),
+  require('../../assets/images/sweaters/sweater-2.png'),
+  require('../../assets/images/sweaters/sweater-3.png'),
+  require('../../assets/images/accessories/handbag.png'),
+  require('../../assets/images/accessories/black-handbag.png'),
+  require('../../assets/images/accessories/glasses.png'),
+];
 
 const tabs = [
   {key: 'closet', label: 'Closet'},
@@ -33,7 +37,7 @@ export default function ProfileScreen() {
   const [activeTab, setActiveTab] = React.useState('closet');
 
   return (
-      <ScrollView className="bg-white flex-1">
+      <ScrollView className="bg-white flex-1 pt-14">
         {/* Header */}
         <Box className="flex-row items-center justify-end px-4 pt-10 pb-4">
           <HStack space="md">
@@ -50,7 +54,9 @@ export default function ProfileScreen() {
 
         {/* Profile Info */}
         <VStack className="items-center mb-2">
-          <Avatar size="xl" source={{uri: 'https://randomuser.me/api/portraits/women/44.jpg'}}/>
+          <Avatar size="xl" className="bg-black items-center justify-center">
+            <AvatarFallbackText className="text-white text-5xl">C</AvatarFallbackText>
+          </Avatar>
           <Text className="text-lg font-semibold mt-2">chloe21</Text>
           <HStack className="items-center mt-1">
             <Text className="text-gray-500 text-sm">Emmen, Netherlands</Text>

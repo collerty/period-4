@@ -5,10 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eedc67ad-8fa8-415d-aabf-8f0e31e0c348" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/front-end/assets/images/jeans/jeans-4.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/app/(app)/calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/app/(app)/calendar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/app/(app)/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/app/(app)/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/app/(app)/profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/app/(app)/profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/app/(app)/suggestions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/app/(app)/suggestions.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/app/(app)/wardrobe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/app/(app)/wardrobe.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/assets/images/accessories/handbag.png" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assets/images/accessories/handbag.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/assets/images/jeans/jeans-4.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/assets/images/sweaters/sweater-3.png" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/assets/images/sweaters/sweater-3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/components/PostCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/components/PostCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front-end/lib/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end2/app/explore.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,11 +69,11 @@
       <recent name="C:\Users\collert\WebstormProjects\period-4\front-end\app\(tabs)\test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\collert\WebstormProjects\period-4\front-end2\app\(auth)" />
-      <recent name="C:\Users\collert\WebstormProjects\period-4\front-end2\assets\images" />
-      <recent name="C:\Users\collert\WebstormProjects\period-4\front-end2" />
-      <recent name="C:\Users\collert\WebstormProjects\period-4\front-end\src\app\(app)" />
-      <recent name="C:\Users\collert\WebstormProjects\period-4\back-end" />
+      <recent name="C:\Users\collert\WebstormProjects\period-4\front-end\assets\images\sweaters" />
+      <recent name="C:\Users\collert\WebstormProjects\period-4\front-end\assets\images\jeans" />
+      <recent name="C:\Users\collert\WebstormProjects\period-4\front-end\assets\images\accessories" />
+      <recent name="C:\Users\collert\WebstormProjects\period-4\front-end\assets\images\sneakers" />
+      <recent name="C:\Users\collert\WebstormProjects\period-4\front-end\assets\images\outfits" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -91,7 +102,7 @@
       <workItem from="1750323103357" duration="239000" />
       <workItem from="1750323364982" duration="5299000" />
       <workItem from="1750334130151" duration="9809000" />
-      <workItem from="1750388491732" duration="546000" />
+      <workItem from="1750388491732" duration="12907000" />
     </task>
     <servers />
   </component>

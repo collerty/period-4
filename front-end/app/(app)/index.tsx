@@ -17,32 +17,47 @@ const posts = [
   {
     id: '1',
     user: {
-      name: 'Selena_12',
-      avatar: 'https://i.imgur.com/L68x542.jpg',
+      name: 'chloe21',
+      avatar: require('../../assets/images/profile-icon60x60.png'),
     },
     images: [
-      'https://i.imgur.com/m59P7i2.png', // Main shirt
-      'https://i.imgur.com/rXb4YlK.png', // Skirt
-      'https://i.imgur.com/zV8QdJh.png', // Shoes
-      'https://i.imgur.com/dDCnsr4.png', // Bag
+      require('../../assets/images/jeans/jeans-1.png'),
+      require('../../assets/images/sweaters/sweater-1.avif'),
+      require('../../assets/images/sneakers/sneakers-1.webp'),
+      require('../../assets/images/accessories/handbag.png'),
     ],
-    caption: 'A casual and comfy look for a sunny day out. What do you guys think? ✨',
-    likes: 7,
+    caption: 'Comfy jeans, cozy sweater, and my favorite sneakers for a casual day!',
+    likes: 12,
   },
   {
     id: '2',
     user: {
       name: 'lee_beige',
-      avatar: 'https://i.imgur.com/t33H9yE.jpg',
+      avatar: require('../../assets/images/profile-icon60x60.png'),
     },
     images: [
-      'https://i.imgur.com/dK3f01K.png', // Jacket
-      'https://i.imgur.com/gKj5b24.png', // Top
-      'https://i.imgur.com/eYxJ14t.png', // Pants
-      'https://i.imgur.com/g8e1O1j.png', // Boots
+      require('../../assets/images/jeans/jeans-2.png'),
+      require('../../assets/images/sweaters/sweater-2.png'),
+      require('../../assets/images/sneakers/sneakers-2.webp'),
+      require('../../assets/images/accessories/black-handbag.png'),
     ],
-    caption: 'My go-to autumn outfit. Staying warm and stylish!',
-    likes: 15,
+    caption: 'Layered up for autumn. Jeans, sweater, and a chic bag!',
+    likes: 18,
+  },
+  {
+    id: '3',
+    user: {
+      name: 'fashionista',
+      avatar: require('../../assets/images/profile-icon60x60.png'),
+    },
+    images: [
+      require('../../assets/images/jeans/jeans-3.webp'),
+      require('../../assets/images/sweaters/sweater-3.png'),
+      require('../../assets/images/sneakers/sneakers-3.webp'),
+      require('../../assets/images/accessories/glasses.png'),
+    ],
+    caption: 'Ready for the weekend with these essentials!',
+    likes: 22,
   },
 ];
 
@@ -52,11 +67,11 @@ export default function FeedPage(){
 
   return (
       <SafeAreaView className="flex-1 bg-white">
-        <VStack className="flex-1">
+        <VStack className="flex-1 justify-center bg-white pt-14">
           {/* --- HEADER --- */}
-          <VStack className="px-4 pt-2 pb-3 bg-white">
+          <VStack className="px-4 pt-2 pb-3 bg-white w-full">
             {/* Top Row: Tabs and Icons */}
-            <HStack className="justify-between items-center">
+            <HStack className="justify-between items-center w-full">
               {/* Tabs */}
               <HStack space="xl">
                 <Pressable onPress={() => setActiveTab('new')} className={`pb-2 ${activeTab === 'new' ? 'border-b-2 border-black' : ''}`}>
@@ -88,7 +103,7 @@ export default function FeedPage(){
 
             {/* Search Bar */}
             <Input className="mt-4 bg-gray-100 rounded-lg border-gray-100 h-12">
-              <InputSlot pl="$3">
+              <InputSlot>
                 <InputIcon as={SearchIcon} className="text-gray-500"/>
               </InputSlot>
               <InputField placeholder="Search for hashtags or users" />
@@ -104,6 +119,4 @@ export default function FeedPage(){
         </VStack>
       </SafeAreaView>
   );
-};
-
-export default FeedPage;
+}

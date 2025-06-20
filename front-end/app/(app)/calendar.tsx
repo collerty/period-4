@@ -131,7 +131,7 @@ const CalendarPage = () => {
   };
 
   return (
-      <ScrollView className="bg-white">
+      <ScrollView className="bg-white flex-1 pt-14">
         <Box className="p-4">
           {/* Header */}
           <HStack className="justify-between items-center mb-4">

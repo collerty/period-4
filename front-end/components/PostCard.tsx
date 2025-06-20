@@ -8,7 +8,15 @@ import { Icon } from '@/components/ui/icon';
 import { HeartIcon, BookmarkIcon } from 'lucide-react-native';
 
 // A reusable Post Card component
-export const PostCard = ({ post }) => {
+export const PostCard = ({ post }: { post: any }) => {
+  // Helper to resolve image source
+  const resolveSource = (img: any) => {
+    if (typeof img === 'string') {
+      return { uri: img };
+    }
+    return img;
+  };
+
   // Helper to render the image grid
   const renderImages = () => {
     if (!post.images || post.images.length === 0) {
@@ -17,19 +25,19 @@ export const PostCard = ({ post }) => {
 
     // Single Image
     if (post.images.length === 1) {
-      return <Image source={{ uri: post.images[0] }} className="w-full h-80 rounded-lg" alt="Outfit" />;
+      return <Image source={resolveSource(post.images[0])} className="w-full h-80 rounded-lg" alt="Outfit" />;
     }
 
     // 2-4 Images in a grid
     return (
         <HStack className="w-full h-80 rounded-lg overflow-hidden" space="xs">
           <VStack className="flex-1" space="xs">
-            <Image source={{ uri: post.images[0] }} className="flex-1 w-full" alt="Outfit 1" />
-            {post.images[2] && <Image source={{ uri: post.images[2] }} className="flex-1 w-full" alt="Outfit 3" />}
+            <Image source={resolveSource(post.images[0])} className="flex-1 w-full" alt="Outfit 1" />
+            {post.images[2] && <Image source={resolveSource(post.images[2])} className="flex-1 w-full" alt="Outfit 3" />}
           </VStack>
           <VStack className="flex-1" space="xs">
-            {post.images[1] && <Image source={{ uri: post.images[1] }} className="flex-1 w-full" alt="Outfit 2" />}
-            {post.images[3] && <Image source={{ uri: post.images[3] }} className="flex-1 w-full" alt="Outfit 4" />}
+            {post.images[1] && <Image source={resolveSource(post.images[1])} className="flex-1 w-full" alt="Outfit 2" />}
+            {post.images[3] && <Image source={resolveSource(post.images[3])} className="flex-1 w-full" alt="Outfit 4" />}
           </VStack>
         </HStack>
     );
@@ -47,7 +55,7 @@ export const PostCard = ({ post }) => {
         <HStack className="justify-between items-center mt-3">
           {/* User Info */}
           <HStack className="items-center" space="sm">
-            <Image source={{ uri: post.user.avatar }} className="w-10 h-10 rounded-full" alt={post.user.name} />
+            <Image source={resolveSource(post.user.avatar)} className="w-10 h-10 rounded-full" alt={post.user.name} />
             <Text className="font-bold">{post.user.name}</Text>
           </HStack>
 
