@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="eedc67ad-8fa8-415d-aabf-8f0e31e0c348" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/app/(app)/suggestions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/app/(app)/suggestions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/app/(app)/wardrobe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/app/(app)/wardrobe.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2xd53s4zeIDbfwavxesGfjho7xv" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/collert/WebstormProjects/period-4/front-end2/components/auth&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\collert\\WebstormProjects\\period-4\\back-end\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\collert\WebstormProjects\period-4\front-end2\components\auth" />
+      <recent name="C:\Users\collert\WebstormProjects\period-4\front-end2\hooks" />
+      <recent name="C:\Users\collert\WebstormProjects\period-4\front-end2\app" />
+      <recent name="C:\Users\collert\WebstormProjects\period-4\front-end\app\(tabs)\test" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\collert\WebstormProjects\period-4\front-end\assets\images\sweaters" />
+      <recent name="C:\Users\collert\WebstormProjects\period-4\front-end\assets\images\jeans" />
+      <recent name="C:\Users\collert\WebstormProjects\period-4\front-end\assets\images\accessories" />
+      <recent name="C:\Users\collert\WebstormProjects\period-4\front-end\assets\images\sneakers" />
+      <recent name="C:\Users\collert\WebstormProjects\period-4\front-end\assets\images\outfits" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-WS-241.14494.235" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eedc67ad-8fa8-415d-aabf-8f0e31e0c348" name="Changes" comment="" />
+      <created>1748254913646</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1748254913646</updated>
+      <workItem from="1748254914862" duration="3805000" />
+      <workItem from="1749632486606" duration="885000" />
+      <workItem from="1749633394981" duration="4366000" />
+      <workItem from="1750055944733" duration="969000" />
+      <workItem from="1750109825510" duration="11624000" />
+      <workItem from="1750248119630" duration="1456000" />
+      <workItem from="1750249612650" duration="7608000" />
+      <workItem from="1750309363275" duration="12549000" />
+      <workItem from="1750323103357" duration="239000" />
+      <workItem from="1750323364982" duration="5299000" />
+      <workItem from="1750334130151" duration="9809000" />
+      <workItem from="1750388491732" duration="13413000" />
+      <workItem from="1750427819541" duration="8000" />
+      <workItem from="1750446490781" duration="2004000" />
+      <workItem from="1750451494600" duration="2358000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

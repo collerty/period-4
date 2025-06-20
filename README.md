@@ -1,50 +1,96 @@
-# Welcome to your Expo app 👋
+# Period 4 Project
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This project consists of a **back-end** (NestJS, PostgreSQL, Cloudinary integration) and a **front-end** (React Native/Expo with NativeWind and Gluestack UI).
 
-## Get started
+---
 
-1. Install dependencies
+## Prerequisites
+- Node.js (v18+ recommended)
+- npm (v9+ recommended)
+- [Expo CLI](https://docs.expo.dev/get-started/installation/) (for front-end)
+- PostgreSQL database (local or cloud, e.g. Railway)
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+## 1. Clone the Repository
+```sh
+git clone <your-repo-url>
+cd period-4
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## 2. Back-end Setup
 
-To learn more about developing your project with Expo, look at the following resources:
+### a. Install dependencies
+```sh
+cd back-end
+npm install
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### b. Environment Variables
+Create a `.env` file in the `back-end` directory:
+```
+DATABASE_URL=postgresql://<user>:<password>@<host>:<port>/<db>
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+```
 
-## Join the community
+### c. Run Migrations (if using Prisma)
+```sh
+npx prisma migrate deploy
+```
 
-Join our community of developers creating universal apps.
+### d. Start the Back-end
+```sh
+npm run start:dev
+```
+- The API will run on [http://localhost:4000](http://localhost:4000) by default.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
+
+## 3. Front-end Setup
+
+### a. Install dependencies
+```sh
+cd ../front-end
+npm install
+```
+
+### b. Start the Expo App
+```sh
+npx expo start
+```
+- Use the Expo Go app or an emulator to run the app.
+
+---
+
+## 4. Features
+- **Wardrobe:** Add, view, and manage clothing items (with local images or uploads)
+- **AI Generator:** Randomly generate outfits from assets
+- **Image Upload:** (Back-end) Upload images to Cloudinary (see `/upload/image` endpoint)
+
+---
+
+## 5. Useful Scripts
+- `npm run start:dev` (back-end): Start NestJS in watch mode
+- `npx expo start` (front-end): Start Expo dev server
+
+---
+
+## 6. Troubleshooting
+- Ensure your `.env` file is present and correct in `back-end/`
+- Restart the server after changing environment variables
+- For image picker features, test on a real device or emulator with media access
+
+---
+
+## 7. Project Structure
+```
+period-4/
+  back-end/    # NestJS API, Prisma, Cloudinary
+  front-end/   # Expo React Native app
+```
+
+---

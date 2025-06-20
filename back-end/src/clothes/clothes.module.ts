@@ -1,0 +1,11 @@
+import { Module } from '@nestjs/common';
+import { ClothesService } from './clothes.service';
+import { ClothesController } from './clothes.controller';
+import { PrismaModule } from '../prisma/prisma.module';
+
+@Module({
+  imports: [PrismaModule],
+  controllers: [ClothesController],
+  providers: [ClothesService],
+})
+export class ClothesModule {}
