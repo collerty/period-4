@@ -7,10 +7,12 @@ import {AuthModule} from './auth/auth.module';
 import {PrismaModule} from "./prisma/prisma.module";
 import {ClothesModule} from "./clothes/clothes.module";
 import {OutfitsModule} from "./outfits/outfits.module";
+import { CloudinaryModule } from './cloudinary.module';
+import { UploadController } from './upload.controller';
 
 @Module({
-  imports: [ConfigModule.forRoot(), UsersModule, AuthModule, PrismaModule, ClothesModule, OutfitsModule],
-  controllers: [AppController],
+  imports: [ConfigModule.forRoot(), UsersModule, AuthModule, PrismaModule, ClothesModule, OutfitsModule, CloudinaryModule],
+  controllers: [AppController, UploadController],
   providers: [AppService],
 })
 export class AppModule {

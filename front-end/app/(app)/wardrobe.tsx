@@ -15,7 +15,7 @@ type WardrobeItem = {
   id: string;
   name: string;
   type: string;
-  image?: string;
+  image?: any;
 };
 
 const categories = ['Jeans', 'Sweaters', 'Jackets', 'Sneakers', "Accessories"];
@@ -146,7 +146,7 @@ export default function WardrobeScreen() {
                 <VStack className="flex-1 m-2 items-center">
                   <Box className="w-36 h-40 bg-neutral-200 rounded-xl mb-2 items-center justify-center overflow-hidden">
                     {item.image ? (
-                        <Image source={{ uri: item.image }} style={{ width: '100%', height: '100%' }} resizeMode="cover" />
+                        <Image source={item.image} style={{ width: '100%', height: '100%' }} resizeMode="cover" />
                     ) : null}
                   </Box>
                   <Text className="text-base font-medium">{item.name}</Text>
@@ -159,7 +159,17 @@ export default function WardrobeScreen() {
             className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-black w-14 h-14 rounded-full items-center justify-center z-50 shadow-lg"
             style={{transform: [{translateX: -28}]}}
             activeOpacity={0.8}
-            onPress={() => setModalVisible(true)}
+            onPress={() => {
+              setItems([
+                ...items,
+                {
+                  id: Date.now().toString(),
+                  name: ' Jeans',
+                  type: 'Jeans',
+                  image: require('../../assets/images/jeans/jeans-1.png'),
+                },
+              ]);
+            }}
         >
           <Icon as={AddIcon} color="white" size="xl"/>
         </TouchableOpacity>
